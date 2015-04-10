@@ -448,6 +448,152 @@
         ]
       }
     },
+    "/buildingblock/{building_block_id}/categories/": {
+      "get": {
+        "summary": "building block tags",
+        "description": "building block tags",
+        "operationId": "getbuildingblockTags",
+        "parameters": [
+          {
+            "name": "building_block_id",
+            "in": "path",
+            "description": "id for building block",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the building block",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Building Block Tags Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tag"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tags"
+        ]
+      },
+      "post": {
+        "summary": "add tag to building block",
+        "description": "add tag to building block",
+        "operationId": "addBuildingBlockTag",
+        "parameters": [
+          {
+            "name": "building_block_id",
+            "in": "path",
+            "description": "id for the building block",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "description": "tag name",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Building Block Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tag"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tags"
+        ]
+      }
+    },
+    "/buildingblock/{building_block_id}/categories/{category}": {
+      "delete": {
+        "summary": "delete buildingblock tag",
+        "description": "delete buildingblock tag",
+        "operationId": "deletebuildingblockTag",
+        "parameters": [
+          {
+            "name": "building_block_id",
+            "in": "path",
+            "description": "id for the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "category",
+            "in": "path",
+            "description": "category to remove from building block",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Building Block Tag Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/tag"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Tags"
+        ]
+      }
+    },
     "/buildingblock/{building_block_id}/images/": {
       "get": {
         "summary": "get building block images",
@@ -1423,7 +1569,7 @@
           "type": "string"
         }
       }
-    },    
+    },
     "tag": {
       "properties": {
         "tag_id": {

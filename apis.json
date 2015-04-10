@@ -13,7 +13,7 @@
   "SpecificationVersion": "0.14",
   "apis": [
     {
-      "name": "Building Block",
+      "name": "Building Blocks",
       "description": "A buildingblock API resource.",
       "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-building-blocks-design.png",
       "humanURL": "https://kin-lane.github.io/buildingblock/",

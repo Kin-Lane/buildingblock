@@ -1586,19 +1586,19 @@
           "type": "integer"
         }
       }
-    },    
+    },
     "category": {
       "properties": {
-        "tag_id": {
-          "description": "id for the tag",
+        "category_id": {
+          "description": "id for the category",
           "type": "integer",
           "format": "id"
         },
-        "tag": {
-          "description": "text tag",
+        "category": {
+          "description": "text category",
           "type": "string"
         },
-        "api_count": {
+        "building_block_count": {
           "description": "number of items api with tag",
           "type": "integer"
         }

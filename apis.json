@@ -1,6 +1,6 @@
 {
   "name": "Kin Lane - Building Block",
-  "description": "This is my default buildingblock API, using it to manage posts in a single API. It is a Stack Network API resource, with supporting docker container for the API.",
+  "description": "When I started API Evangelist, I began tracking on the elements that other leading API providers use to operate their API programs, and eventually I started calling these building blocks. I keep a running list of building blocks, broken down into groups. I think use these to keep track of which building blocks companies are using. This is the API I use to manage these elements of everyday API operation.",
   "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-building-blocks-design.png",
   "tags": [
     "Application Programming Interface",

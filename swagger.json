@@ -15,7 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/buildingblock/": {
+    "/buildingblocks/": {
       "get": {
         "summary": "all building blocks",
         "description": "all building blocks",
@@ -80,8 +80,8 @@
         ]
       },
       "post": {
-        "summary": "add a buildingblock post",
-        "description": "add a buildingblock post",
+        "summary": "add a building block post",
+        "description": "add a building block post",
         "operationId": "addBuildingBlock",
         "parameters": [
           {
@@ -143,7 +143,44 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/": {
+    "/buildingblocks/bycategory/{category_id}": {
+      "get": {
+        "summary": "building blocks by category",
+        "description": "building blocks by category",
+        "operationId": "getBuildingBlocksByCategory",
+        "parameters": [
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the building block",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "building block response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/buildingblock"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Building Block"
+        ]
+      }
+    },
+    "/buildingblocks/{building_block_id}/": {
       "get": {
         "summary": "Retrieve a buildingblock using its slug",
         "description": "Returns the building block detail",
@@ -302,7 +339,7 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/tags/": {
+    "/buildingblocks/{building_block_id}/tags/": {
       "get": {
         "summary": "building block tags",
         "description": "building block tags",
@@ -397,7 +434,7 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/tags/{tag}": {
+    "/buildingblocks/{building_block_id}/tags/{tag}": {
       "delete": {
         "summary": "delete buildingblock tag",
         "description": "delete buildingblock tag",
@@ -448,7 +485,7 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/images/": {
+    "/buildingblocks/{building_block_id}/images/": {
       "get": {
         "summary": "get building block images",
         "description": "get building block images",
@@ -557,7 +594,7 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/images/{image_id}": {
+    "/buildingblocks/{building_block_id}/images/{image_id}": {
       "delete": {
         "summary": "delete a building block image",
         "description": "delete a building block image",
@@ -608,7 +645,7 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/logs/": {
+    "/buildingblocks/{building_block_id}/logs/": {
       "get": {
         "summary": "get building block logs",
         "description": "get building block logs",
@@ -710,7 +747,7 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/logs/{log_id}": {
+    "/buildingblocks/{building_block_id}/logs/{log_id}": {
       "delete": {
         "summary": "delete a building block log",
         "description": "delete a building block log",
@@ -761,7 +798,7 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/tools/": {
+    "/buildingblocks/{building_block_id}/tools/": {
       "get": {
         "summary": "retrieve building block tools",
         "description": "retrieve building block tools",
@@ -864,7 +901,7 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/tools/{tool_id}": {
+    "/buildingblocks/{building_block_id}/tools/{tool_id}": {
       "delete": {
         "summary": "delete a building block tool",
         "description": "delete a building block tool",
@@ -915,7 +952,7 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/organization/": {
+    "/buildingblocks/{building_block_id}/organization/": {
       "get": {
         "summary": "retrieve building block companies",
         "description": "retrieve building block companies",
@@ -1018,7 +1055,7 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/organization/{organization_id}": {
+    "/buildingblocks/{building_block_id}/organization/{organization_id}": {
       "delete": {
         "summary": "delete a building block organization",
         "description": "delete a building block organization",
@@ -1069,7 +1106,7 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/urls/": {
+    "/buildingblocks/{building_block_id}/urls/": {
       "get": {
         "summary": "retrieve building block url",
         "description": "retrieve building block url",
@@ -1178,7 +1215,7 @@
         ]
       }
     },
-    "/buildingblock/{building_block_id}/urls/{url_id}": {
+    "/buildingblocks/{building_block_id}/urls/{url_id}": {
       "delete": {
         "summary": "delete a building block url",
         "description": "delete a building block url",
@@ -1229,7 +1266,7 @@
         ]
       }
     },
-    "/buildingblock/categories/": {
+    "/buildingblocks/categories/": {
       "get": {
         "summary": "retrieve building block categories",
         "description": "retrieve building block categories",
@@ -1338,7 +1375,7 @@
         ]
       }
     },
-    "/buildingblock/categories/{category_id}": {
+    "/buildingblocks/categories/{category_id}": {
       "delete": {
         "summary": "delete a building block category",
         "description": "delete a building block category",

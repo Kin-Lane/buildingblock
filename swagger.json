@@ -150,9 +150,9 @@
         "operationId": "getBuildingBlocksByCategory",
         "parameters": [
           {
-            "name": "category_id",
+            "name": "category",
             "in": "path",
-            "description": "the unique id for building block category",
+            "description": "the building block category to filter by",
             "required": true,
             "type": "integer",
             "format": "id"
@@ -195,9 +195,9 @@
         "operationId": "getBuildingBlocksByType",
         "parameters": [
           {
-            "name": "category_id",
+            "name": "type",
             "in": "path",
-            "description": "the unique id for building block category",
+            "description": "the building block type to filter by",
             "required": true,
             "type": "integer",
             "format": "id"

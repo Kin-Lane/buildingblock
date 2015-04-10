@@ -150,6 +150,14 @@
         "operationId": "getBuildingBlocksByCategory",
         "parameters": [
           {
+            "name": "category_id",
+            "in": "path",
+            "description": "the unique id for building block category",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },          
+          {
             "name": "appid",
             "in": "query",
             "description": "your appid for accessing the building block",
@@ -1273,14 +1281,6 @@
         "operationId": "getBuildingBlockCategories",
         "parameters": [
           {
-            "name": "building_block_id",
-            "in": "path",
-            "description": "id for building block",
-            "required": true,
-            "type": "integer",
-            "format": "id"
-          },
-          {
             "name": "appid",
             "in": "query",
             "description": "your appid for accessing the building block",
@@ -1315,14 +1315,6 @@
         "description": "add building block category",
         "operationId": "addBuildingBlockCategory",
         "parameters": [
-          {
-            "name": "building_block_id",
-            "in": "path",
-            "description": "id for the building block",
-            "required": true,
-            "type": "integer",
-            "format": "id"
-          },
           {
             "name": "appid",
             "in": "formData",
@@ -1382,7 +1374,7 @@
         "operationId": "deleteBuildingBlockCategory",
         "parameters": [
           {
-            "name": "building_block_id",
+            "name": "category_id",
             "in": "path",
             "description": "id for the building block",
             "required": true,
@@ -1399,13 +1391,6 @@
             "name": "appkey",
             "in": "query",
             "description": "your appkey for accessing the building block",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "name": "url_id",
-            "in": "path",
-            "description": "id for the url",
             "required": true,
             "type": "string"
           }

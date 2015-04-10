@@ -1228,6 +1228,166 @@
           "URLs"
         ]
       }
+    },
+    "/buildingblock/categories/": {
+      "get": {
+        "summary": "retrieve building block categories",
+        "description": "retrieve building block categories",
+        "operationId": "getBuildingBlockCategories",
+        "parameters": [
+          {
+            "name": "building_block_id",
+            "in": "path",
+            "description": "id for building block",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the building block",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Building Block URL Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/url"
+              }
+            }
+          }
+        },
+        "tags": [
+          "URLs"
+        ]
+      },
+      "post": {
+        "summary": "add building block category",
+        "description": "add building block category",
+        "operationId": "addBuildingBlockCategory",
+        "parameters": [
+          {
+            "name": "building_block_id",
+            "in": "path",
+            "description": "id for the building block",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "formData",
+            "description": "your appid for accessing the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "formData",
+            "description": "your appkey for accessing the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "in": "formData",
+            "description": "type of url",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "url",
+            "in": "formData",
+            "description": "the url",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "name",
+            "in": "formData",
+            "description": "a name for the url",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Building Block URL Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/url"
+              }
+            }
+          }
+        },
+        "tags": [
+          "URLs"
+        ]
+      }
+    },
+    "/buildingblock/categories/{category_id}": {
+      "delete": {
+        "summary": "delete a building block category",
+        "description": "delete a building block category",
+        "operationId": "deleteBuildingBlockCategory",
+        "parameters": [
+          {
+            "name": "building_block_id",
+            "in": "path",
+            "description": "id for the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "url_id",
+            "in": "path",
+            "description": "id for the url",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Building Block URL Response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/url"
+              }
+            }
+          }
+        },
+        "tags": [
+          "URLs"
+        ]
+      }
     }
   },
   "definitions": {
@@ -1423,7 +1583,7 @@
           "type": "string"
         }
       }
-    },    
+    },
     "tag": {
       "properties": {
         "tag_id": {

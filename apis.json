@@ -1,7 +1,7 @@
 {
   "name": "Kin Lane - Building Block",
   "description": "This is my default buildingblock API, using it to manage posts in a single API. It is a Stack Network API resource, with supporting docker container for the API.",
-  "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-buildingblock-icon.png",
+  "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-building-blocks-design.png",
   "tags": [
     "Application Programming Interface",
     "API",
@@ -15,7 +15,7 @@
     {
       "name": "Building Block",
       "description": "A buildingblock API resource.",
-      "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-building-block-icon.png",
+      "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-building-blocks-design.png",
       "humanURL": "https://kin-lane.github.io/buildingblock/",
       "baseURL": "http://buildingblock.api.kinlane.com",
       "tags": [

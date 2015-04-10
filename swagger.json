@@ -143,11 +143,56 @@
         ]
       }
     },
-    "/buildingblocks/bycategory/{category_id}": {
+    "/buildingblocks/bycategory/{category}": {
       "get": {
         "summary": "building blocks by category",
         "description": "building blocks by category",
         "operationId": "getBuildingBlocksByCategory",
+        "parameters": [
+          {
+            "name": "category_id",
+            "in": "path",
+            "description": "the unique id for building block category",
+            "required": true,
+            "type": "integer",
+            "format": "id"
+          },
+          {
+            "name": "appid",
+            "in": "query",
+            "description": "your appid for accessing the building block",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "appkey",
+            "in": "query",
+            "description": "your appkey for accessing the building block",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "building block response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/buildingblock"
+              }
+            }
+          }
+        },
+        "tags": [
+          "Building Block"
+        ]
+      }
+    },
+    "/buildingblocks/bytype/{type}": {
+      "get": {
+        "summary": "building blocks by type",
+        "description": "building blocks by type",
+        "operationId": "getBuildingBlocksByType",
         "parameters": [
           {
             "name": "category_id",

@@ -1423,7 +1423,7 @@
           "type": "string"
         }
       }
-    },
+    },    
     "tag": {
       "properties": {
         "tag_id": {
@@ -1436,23 +1436,6 @@
           "type": "string"
         },
         "api_count": {
-          "description": "number of items api with tag",
-          "type": "integer"
-        }
-      }
-    },
-    "category": {
-      "properties": {
-        "category_id": {
-          "description": "id for the category",
-          "type": "integer",
-          "format": "id"
-        },
-        "category": {
-          "description": "text category",
-          "type": "string"
-        },
-        "building_block_count": {
           "description": "number of items api with tag",
           "type": "integer"
         }

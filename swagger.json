@@ -6,7 +6,7 @@
     "termsOfService": "http://stack.network/terms-of-service.html",
     "version": "v2"
   },
-  "host": "building block.api.kinlane.com",
+  "host": "buildingblock.api.kinlane.com",
   "basePath": "/",
   "schemes": [
     "https"

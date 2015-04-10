@@ -450,9 +450,9 @@
     },
     "/buildingblock/{building_block_id}/categories/": {
       "get": {
-        "summary": "building block tags",
-        "description": "building block tags",
-        "operationId": "getbuildingblockTags",
+        "summary": "building block categories",
+        "description": "building block categories",
+        "operationId": "getBuildingBlockCategories",
         "parameters": [
           {
             "name": "building_block_id",
@@ -479,21 +479,21 @@
         ],
         "responses": {
           "200": {
-            "description": "Building Block Tags Response",
+            "description": "Building Block Category Response",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/tag"
+                "$ref": "#/definitions/category"
               }
             }
           }
         },
         "tags": [
-          "Tags"
+          "Categories"
         ]
       },
       "post": {
-        "summary": "add tag to building block",
+        "summary": "add category to building block",
         "description": "add tag to building block",
         "operationId": "addBuildingBlockTag",
         "parameters": [
@@ -520,34 +520,34 @@
             "type": "string"
           },
           {
-            "name": "tag",
+            "name": "category",
             "in": "query",
-            "description": "tag name",
+            "description": "category name",
             "required": true,
             "type": "string"
           }
         ],
         "responses": {
           "200": {
-            "description": "Building Block Response",
+            "description": "Building Block Category Response",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/tag"
+                "$ref": "#/definitions/category"
               }
             }
           }
         },
         "tags": [
-          "Tags"
+          "Categories"
         ]
       }
     },
     "/buildingblock/{building_block_id}/categories/{category}": {
       "delete": {
-        "summary": "delete buildingblock tag",
-        "description": "delete buildingblock tag",
-        "operationId": "deletebuildingblockTag",
+        "summary": "delete building block tag",
+        "description": "delete building block tag",
+        "operationId": "deleteBuildingBlockCategory",
         "parameters": [
           {
             "name": "building_block_id",
@@ -584,13 +584,13 @@
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/tag"
+                "$ref": "#/definitions/category"
               }
             }
           }
         },
         "tags": [
-          "Tags"
+          "Categories"
         ]
       }
     },

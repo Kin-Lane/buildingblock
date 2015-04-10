@@ -1675,8 +1675,16 @@
           "type": "integer",
           "format": "id"
         },
-        "category": {
-          "description": "text tag",
+        "name": {
+          "description": "name of category",
+          "type": "string"
+        },
+        "sort_order": {
+          "description": "sort order for category",
+          "type": "string"
+        },
+        "type": {
+          "description": "type of category",
           "type": "string"
         }
       }

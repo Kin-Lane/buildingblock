@@ -156,7 +156,7 @@
             "required": true,
             "type": "integer",
             "format": "id"
-          },          
+          },
           {
             "name": "appid",
             "in": "query",
@@ -1297,17 +1297,17 @@
         ],
         "responses": {
           "200": {
-            "description": "Building Block URL Response",
+            "description": "Building Block Category Response",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/url"
+                "$ref": "#/definitions/category"
               }
             }
           }
         },
         "tags": [
-          "URLs"
+          "Categories"
         ]
       },
       "post": {
@@ -1353,17 +1353,17 @@
         ],
         "responses": {
           "200": {
-            "description": "Building Block URL Response",
+            "description": "Building Block Category Response",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/url"
+                "$ref": "#/definitions/category"
               }
             }
           }
         },
         "tags": [
-          "URLs"
+          "Categories"
         ]
       }
     },
@@ -1397,17 +1397,17 @@
         ],
         "responses": {
           "200": {
-            "description": "Building Block URL Response",
+            "description": "Building Block Category Response",
             "schema": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/url"
+                "$ref": "#/definitions/category"
               }
             }
           }
         },
         "tags": [
-          "URLs"
+          "Categories"
         ]
       }
     }
@@ -1620,6 +1620,19 @@
         "api_count": {
           "description": "number of items api with tag",
           "type": "integer"
+        }
+      }
+    },
+    "category": {
+      "properties": {
+        "category_id": {
+          "description": "id for the category",
+          "type": "integer",
+          "format": "id"
+        },
+        "category": {
+          "description": "text tag",
+          "type": "string"
         }
       }
     }

@@ -27,7 +27,11 @@
         {
           "type": "swagger",
           "url": "https://kin-lane.github.io/buildingblock/swagger.json"
-        }      
+        },
+        {
+          "type": "x-api-code-libraries",
+          "url": "https://kin-lane.github.io/buildingblock/api-code-libraries.json"
+        }       
       ],
       "contact": [
         {

@@ -5,7 +5,7 @@ $app->get($route, function ($building_block_id)  use ($app){
 
 	$ReturnObject = array();
 		
-	$Query = "SELECT * FROM building_block WHERE ID = " . $building_block_id;
+	$Query = "SELECT * FROM building_block WHERE Building_Block_ID = " . $building_block_id;
 	
 	$DatabaseResult = mysql_query($Query) or die('Query failed: ' . mysql_error());
 	  

@@ -2,6 +2,9 @@
 $route = '/buildingblocks/:building_block_id/tags/:tag/';
 $app->delete($route, function ($building_block_id,$tag)  use ($app){
 
+	$host = $_SERVER['HTTP_HOST'];
+	$building_block_id = prepareIdIn($building_block_id,$host);
+
 	$ReturnObject = array();
 		
  	$request = $app->request(); 
@@ -24,7 +27,11 @@ $app->delete($route, function ($building_block_id,$tag)  use ($app){
 			$DeleteResult = mysql_query($DeleteQuery) or die('Query failed: ' . mysql_error());
 			}
 
+		$building_block_id = prepareIdOut($building_block_id,$host);
+		$tag_id = prepareIdOut($tag_id,$host);
+
 		$F = array();
+		$F['building_block_id'] = $building_block_id;
 		$F['tag_id'] = $tag_id;
 		$F['tag'] = $tag;
 		$F['buildingblock_count'] = 0;

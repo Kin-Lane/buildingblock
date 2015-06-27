@@ -2,6 +2,9 @@
 $route = '/buildingblocks/:building_block_id/tags/';
 $app->get($route, function ($building_block_id)  use ($app){
 
+	$host = $_SERVER['HTTP_HOST'];
+	$building_block_id = prepareIdIn($building_block_id,$host);
+
 	$ReturnObject = array();
 		
  	$request = $app->request(); 
@@ -18,6 +21,8 @@ $app->get($route, function ($building_block_id)  use ($app){
 			
 		$Tag_ID = $Database['Tag_ID'];
 		$Tag_Text = $Database['Tag'];
+
+		$building_block_id = prepareIdOut($building_block_id,$host);
 
 		$F = array();
 		$F['tag_id'] = $Tag_ID;

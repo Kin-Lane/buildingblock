@@ -7,23 +7,26 @@ $app->delete($route, function ($category)  use ($app){
  	$request = $app->request(); 
  	$params = $request->params();	
 
-	$Query = "SELECT t.Tag_ID, t.Tag FROM categories WHERE Tag = '" . trim(mysql_real_escape_string($category)) . "'";
+	$Query = "SELECT * FROM building_blockcategory WHERE Name = '" . trim(mysql_real_escape_string($category)) . "'";
 
-	$TagResult = mysql_query($LinkQuery) or die('Query failed: ' . mysql_error());
+	$CategoryResult = mysql_query($Query) or die('Query failed: ' . mysql_error());
 		
-	if($TagResult && mysql_num_rows($TagResult))
+	if($CategoryResult && mysql_num_rows($CategoryResult))
 		{	
 		$Tag = mysql_fetch_assoc($TagResult);
-		$Tag_ID = $Tag['Tag_ID'];
-		$Tag_Text = $Tag['Tag'];
+		$building_block_category_id = $Tag['BuildngBlockCategory_ID'];
+		$name = $Tag['Name'];
+		$sort_order = $Tag['Sort_Order'];
+		$type = $Tag['Type'];
 
-		$DeleteQuery = "DELETE FROM building_block_category_pivot WHERE Tag_ID = " . $Tag_ID;
-		$DeleteResult = mysql_query($DeleteQuery) or die('Query failed: ' . mysql_error());
-			
+		$host = $_SERVER['HTTP_HOST'];
+		$building_block_category_id = prepareIdOut($building_block_category_id,$host);
+
 		$F = array();
-		$F['category_id'] = $Tag_ID;
-		$F['category'] = $Tag_Text;
-		$F['buildingblock_count'] = 0;
+		$F['building_block_category_id'] = $building_block_category_id;
+		$F['name'] = $name;
+		$F['sort_order'] = $sort_order;
+		$F['type'] = $type;
 		
 		array_push($ReturnObject, $F);
 		}

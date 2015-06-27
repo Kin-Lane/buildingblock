@@ -39,6 +39,10 @@ $app->get($route, function ()  use ($app){
 		$sort_order = $Database['Sort_Order'];	
 				
 		// manipulation zone
+
+    	$host = $_SERVER['HTTP_HOST'];
+    	$building_block_id = prepareIdOut($building_block_id,$host);
+		$building_block_category_id = prepareIdOut($building_block_category_id,$host);
 		
 		$F = array();
 		$F['building_block_id'] = $building_block_id;

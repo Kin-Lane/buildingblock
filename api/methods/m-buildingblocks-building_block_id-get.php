@@ -2,6 +2,8 @@
 $route = '/buildingblocks/:building_block_id/';
 $app->get($route, function ($building_block_id)  use ($app){
 
+	$host = $_SERVER['HTTP_HOST'];
+	$building_block_id = prepareIdIn($building_block_id,$host);
 
 	$ReturnObject = array();
 		
@@ -19,6 +21,9 @@ $app->get($route, function ($building_block_id)  use ($app){
 		$sort_order = $Database['Sort_Order'];	
 				
 		// manipulation zone
+
+		$building_block_id = prepareIdOut($building_block_id,$host);
+		$building_block_category_id = prepareIdOut($building_block_category_id,$host);
 		
 		$F = array();
 		$F['building_block_id'] = $building_block_id;

@@ -7,7 +7,7 @@ $app->get($route, function ()  use ($app){
  	$request = $app->request(); 
  	$params = $request->params();	
 
-	$Query = "SELECT t.Tag_ID, t.Tag, count(*) AS API_Count from categories t";
+	$Query = "SELECT * from categories t";
 	$Query .= " INNER JOIN buildingblock_category_pivot btp ON t.Tag_ID = btp.Tag_ID";
 	$Query .= " GROUP BY t.Tag ORDER BY count(*) DESC";
 
@@ -15,15 +15,24 @@ $app->get($route, function ()  use ($app){
 	  
 	while ($Database = mysql_fetch_assoc($DatabaseResult))
 		{
+		$building_block_id = $Database['Building_Block_ID'];
+		$building_block_category_id = $Database['Building_Block_Category_ID'];
+		$name = $Database['Name'];
+		$about = $Database['About'];
+		$sort_order = $Database['Sort_Order'];	
+				
+		// manipulation zone
 
-		$category_id = $Database['Tag_ID'];
-		$category = $Database['Tag'];
-		$buildingblock_count = $Database['BuildingBlock_Count'];
+   	$host = $_SERVER['HTTP_HOST'];
+   	$building_block_id = prepareIdOut($building_block_id,$host);
+   	$building_block_category_id = prepareIdOut($building_block_category_id,$host);
 
 		$F = array();
-		$F['category_id'] = $category_id;
-		$F['category'] = $category;
-		$F['buildingblock_count'] = $buildingblock_count;
+		$F['building_block_id'] = $building_block_id;
+		$F['building_block_category_id'] = $building_block_category_id;
+		$F['name'] = $name;
+		$F['about'] = $about;
+		$F['sort_order'] = $sort_order;
 		
 		array_push($ReturnObject, $F);
 		}

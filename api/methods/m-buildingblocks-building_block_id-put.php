@@ -2,6 +2,9 @@
 $route = '/buildingblocks/:building_block_id/';	
 $app->put($route, function ($building_block_id) use ($app){
 		
+	$host = $_SERVER['HTTP_HOST'];
+	$building_block_id = prepareIdIn($building_block_id,$host);
+
 	$ReturnObject = array();
 	
  	$request = $app->request(); 
@@ -33,6 +36,9 @@ $app->put($route, function ($building_block_id) use ($app){
 		//echo $query . "<br />";
 		mysql_query($query) or die('Query failed: ' . mysql_error());	
 		}
+
+	$building_block_id = prepareIdOut($building_block_id,$host);
+	$building_block_category_id = prepareIdOut($building_block_category_id,$host);
 
 	$F = array();
 	$F['building_block_id'] = $building_block_id;

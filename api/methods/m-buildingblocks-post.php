@@ -37,6 +37,9 @@ $app->post($route, function () use ($app){
 		$building_block_id = mysql_insert_id();			
 		}
 
+	$host = $_SERVER['HTTP_HOST'];
+	$building_block_id = prepareIdOut($building_block_id,$host);
+
 	$ReturnObject['building_block_id'] = $building_block_id;
 	
 	$app->response()->header("Content-Type", "application/json");

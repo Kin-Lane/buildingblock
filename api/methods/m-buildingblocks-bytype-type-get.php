@@ -2,6 +2,8 @@
 $route = '/buildingblocks/bytype/:type';
 $app->get($route, function ($type)  use ($app){
 
+	$host = $_SERVER['HTTP_HOST'];
+
 	$ReturnObject = array();
 
  	$request = $app->request(); 
@@ -34,6 +36,9 @@ $app->get($route, function ($type)  use ($app){
 				
 		// manipulation zone
 		
+		$building_block_id = prepareIdOut($building_block_id,$host);
+		$building_block_category_id = prepareIdOut($building_block_category_id,$host);
+
 		$F = array();
 		$F['building_block_id'] = $building_block_id;
 		$F['building_block_category_id'] = $building_block_category_id;

@@ -9,13 +9,13 @@ $app->get($route, function ($tag)  use ($app){
 
 	$tag = trim(mysql_real_escape_string($tag));
 
-	$SearchQuery = "SELECT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type as Type FROM building_block b";
+	$SearchQuery = "SELECT DISTINCT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type as Type FROM building_block b";
 	$SearchQuery .= " JOIN building_block_category bbc ON b.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
 	$SearchQuery .= " JOIN building_block_tag_pivot bbtp ON b.Building_Block_ID = bbtp.Building_Block_ID";
 	$SearchQuery .= " JOIN tags t ON bbtp.Tag_ID = t.Tag_ID";
 	$SearchQuery .= " WHERE t.Tag = '" . $tag . "'";
 	$SearchQuery .= " ORDER BY b.Sort_Order ASC";
-	echo $SearchQuery . "<br />";
+	//echo $SearchQuery . "<br />";
 
 	$DatabaseResult = mysql_query($SearchQuery) or die('Query failed: ' . mysql_error());
 

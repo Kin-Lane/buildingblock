@@ -15,7 +15,7 @@ $app->get($route, function ($tag)  use ($app){
 	$SearchQuery .= " JOIN tags t ON bbtp.Tag_ID = t.Tag_ID";
 	$SearchQuery .= " WHERE t.Tag = '" . $tag . "'";
 	$SearchQuery .= " ORDER BY b.Sort_Order ASC";
-	echo $SearchQuery . "<br />";
+	//echo $SearchQuery . "<br />";
 
 	$DatabaseResult = mysql_query($SearchQuery) or die('Query failed: ' . mysql_error());
 

@@ -29,16 +29,13 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		$ReturnObject['rel'] = new stdClass();
 		$ReturnObject['rel'] = "urn:x-resource:schema:https://kin-lane.github.io/buildingblock/schemas/buildingblocks.json";
 
-		// Properties
-		$ReturnObject['properties'] = array();
-		$ReturnObject['properties']['totalItems'] = 0;
-		$ReturnObject['properties']['currentCount'] = 0;
-		$ReturnObject['properties']['nextMaxId'] = 0;
-
-		// Entities
-		$ReturnObject['entities'] = new stdClass();
-
-		$E = array();
+		// Just Count
+		$CountQuery = "SELECT b.Building_Block_ID FROM building_block b";
+		$CountQuery .= " JOIN building_block_category bbc ON b.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
+		$CountQuery .= " WHERE b.Name LIKE '%" . $query . "%'";
+		$CountQuery .= " ORDER BY " . $sort . " " . $order;
+		//echo $CountQuery . "<br />";
+		$CountResult = mysql_query($CountQuery) or die('Query failed: ' . mysql_error());
 
 		$SearchQuery = "SELECT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type as Type,bbc.Sort_Order as Sort_Order_2, bbc.Sort_Order_2 as Sort_Order_3, bbc.Image as Category_Image, bbc.Hex FROM building_block b";
 		$SearchQuery .= " JOIN building_block_category bbc ON b.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
@@ -49,6 +46,17 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		$SearchQuery .= " ORDER BY " . $sort . " " . $order . " LIMIT " . $page . "," . $count;
 		//echo $SearchQuery . "<br />";
 		$DatabaseResult = mysql_query($SearchQuery) or die('Query failed: ' . mysql_error());
+
+		// Properties
+		$ReturnObject['properties'] = array();
+		$ReturnObject['properties']['totalItems'] = mysql_num_rows($CountResult);
+		$ReturnObject['properties']['currentCount'] = mysql_num_rows($DatabaseResult);
+
+		// Entities
+		$ReturnObject['entities'] = new stdClass();
+
+		$E = array();
+
 		while ($Database = mysql_fetch_assoc($DatabaseResult))
 			{
 
@@ -177,9 +185,34 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
 		$ReturnObject['entities'] = $E;
 
-		$ReturnObject['links'] = new stdclass();
+		// Actions
+		$ReturnObject['actions'] = new stdclass();
+		$Actions = array();
 
+		$A = array();
+		$A['name'] = "add-buildingblock";
+		$A['href'] = "https://{host}/{base}/";
+		$A['title'] = "Add a new building block";
+		$A['method'] = "POST";
+		$A['fields'] = array();
+
+		$F = array();
+		$F['name'] = "Field Name";
+		$F['type'] = "text";
+		$F['value'] = "value";
+		array_push($A['fields'],$F);
+
+		array_push($ReturnObject['actions'],$Actions);
+
+		// Links
+		$ReturnObject['links'] = new stdclass();
 		$Links = array();
+
+		$L = array();
+		$L['rel'] = new stdClass();
+		$L['rel'] = "previous";
+		$L['href'] = "";
+		array_push($Links,$L);
 
 		$L = array();
 		$L['rel'] = new stdClass();
@@ -200,6 +233,8 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		array_push($Links,$L);
 
 		$ReturnObject['links'] = $Links;
+
+
 
 		$app->response()->header("Content-Type", "application/vnd.siren+json");
 		echo stripslashes(format_json(json_encode($ReturnObject)));

@@ -6,7 +6,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
  	$request = $app->request();
  	$params = $request->params();
-	echo $contentType . "<br />";
+	//echo $contentType . "<br />";
 	if($contentType == 'application/apis+json')
 		{
 		$app->response()->header("Content-Type", "application/json");
@@ -141,7 +141,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
 		$ReturnObject['links'] = $Links;
 
-		var_dump($ReturnObject);
+		echo json_encode($ReturnObject);
 
 		}
 	else

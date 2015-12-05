@@ -99,14 +99,14 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
 			// Images
 			$Entities['properties']['images'] = array();
-			$ImageQuery = "SELECT Name,Path,Type,Width FROM building_block_image";
+			$ImageQuery = "SELECT Image_Name,Image_Path,Type,Width FROM building_block_image";
 			$ImageQuery .= " WHERE Building_Block_ID = " . $building_block_id;
 			$ImageResult = mysql_query($ImageQuery) or die('Query failed: ' . mysql_error());
 			while ($Images = mysql_fetch_assoc($ImageResult))
 				{
 				$I = array();
-				$I['name'] = $Images['Name'];
-				$I['path'] = $Images['Path'];
+				$I['name'] = $Images['Image_Name'];
+				$I['path'] = $Images['Image_Path'];
 				$I['type'] = $Images['Type'];
 				$I['width'] = $Images['Width'];
 				array_push($Entities['properties']['images'],$I);

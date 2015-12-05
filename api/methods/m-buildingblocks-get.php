@@ -49,7 +49,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			}
 
 		$SearchQuery .= " ORDER BY " . $sort . " " . $order . " LIMIT " . $page . "," . $count;
-		//echo $SearchQuery . "<br />";
+		echo $SearchQuery . "<br />";
 
 		$DatabaseResult = mysql_query($SearchQuery) or die('Query failed: ' . mysql_error());
 

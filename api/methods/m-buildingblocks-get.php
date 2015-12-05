@@ -40,19 +40,17 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		// Entities
 		$ReturnObject['entities'] = new stdClass();
 
+		$E = array();
+
 		$SearchQuery = "SELECT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type as Type,bbc.Sort_Order as Sort_Order_2, bbc.Sort_Order_2 as Sort_Order_3, bbc.Image as Category_Image, bbc.Hex FROM building_block b";
 		$SearchQuery .= " JOIN building_block_category bbc ON b.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
-
 		if($query!='')
 			{
 			$SearchQuery .= " WHERE b.Name LIKE '%" . $query . "%'";
 			}
-
 		$SearchQuery .= " ORDER BY " . $sort . " " . $order . " LIMIT " . $page . "," . $count;
-		echo $SearchQuery . "<br />";
-
+		//echo $SearchQuery . "<br />";
 		$DatabaseResult = mysql_query($SearchQuery) or die('Query failed: ' . mysql_error());
-
 		while ($Database = mysql_fetch_assoc($DatabaseResult))
 			{
 
@@ -63,13 +61,11 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$sort_order = $Database['Sort_Order'];
 			$sort_order_2 = $Database['Sort_Order_2'];
 			$sort_order_3 = $Database['Sort_Order_3'];
-
 			$category = $Database['Category'];
 			$type = $Database['Type'];
 			$category_image = $Database['Category_Image'];
 			$hex = $Database['Hex'];
 
-			$E = array();
 			$Entities = array();
 			$Entities['rel'] = new stdClass();
 
@@ -179,7 +175,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			array_push($E,$Entities);
 			}
 
-		$ReturnObject['entities'] = $Entities;
+		$ReturnObject['entities'] = $E;
 
 		$ReturnObject['links'] = new stdclass();
 

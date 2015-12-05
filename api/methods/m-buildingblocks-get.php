@@ -196,7 +196,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			}
 
 			$app->response()->header("Content-Type", "application/json");
-			echo format_json(json_encode($ReturnObject));
+			echo json_encode($ReturnObject);
 		}
 
 	});

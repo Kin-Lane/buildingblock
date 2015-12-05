@@ -64,8 +64,8 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$sort_order_2 = $Database['Sort_Order_2'];
 			$sort_order_3 = $Database['Sort_Order_3'];
 
-			$category = $Database['category'];
-			$type = $Database['type'];
+			$category = $Database['Category'];
+			$type = $Database['Type'];
 			$category_image = $Database['Category_Image'];
 			$hex = $Database['Hex'];
 

@@ -33,7 +33,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
 		$E = array();
 		$Entities = array();
-		$Entities['rel'] =  = new stdClass();
+		$Entities['rel'] = new stdClass();
 
 		$Entities_rel = array();
 		$Entities_rel[0] = "properties:https://kin-lane.github.io/buildingblock/schemas/buildingblocks.json";

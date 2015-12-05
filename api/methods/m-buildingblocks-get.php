@@ -202,7 +202,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		$ReturnObject['links'] = $Links;
 
 		$app->response()->header("Content-Type", "application/vnd.siren+json");
-		echo format_json(json_encode($ReturnObject));
+		echo stripslashes(format_json(json_encode($ReturnObject)));
 
 		}
 	else
@@ -251,7 +251,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			}
 
 			$app->response()->header("Content-Type", "application/json");
-			echo format_json(json_encode($ReturnObject));
+			echo stripslashes(format_json(json_encode($ReturnObject)));
 		}
 
 	});

@@ -6,17 +6,26 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
  	$request = $app->request();
  	$params = $request->params();
-	//echo $contentType . "<br />";
+
+	if(isset($params['query'])){ $query = trim(mysql_real_escape_string($params['query'])); } else { $query = '';}
+	if(isset($params['page'])){ $page = trim(mysql_real_escape_string($params['page'])); } else { $page = 0;}
+	if(isset($params['count'])){ $count = trim(mysql_real_escape_string($params['count'])); } else { $count = 250;}
+	if(isset($params['sort'])){ $sort = trim(mysql_real_escape_string($params['sort'])); } else { $sort = 'Name';}
+	if(isset($params['order'])){ $order = trim(mysql_real_escape_string($params['order'])); } else { $order = 'DESC';}
+
 	if($contentType == 'application/apis+json')
 		{
+
 		$app->response()->header("Content-Type", "application/json");
 
 		$apis_json_url = "http://" . $githuborg . ".github.io/" . $githubrepo . "/apis.json";
 		$apis_json = file_get_contents($apis_json_url);
 		echo stripslashes(format_json($apis_json));
+
 		}
 	elseif($contentType == 'application/vnd.siren+json')
 		{
+
 		$app->response()->header("Content-Type", "application/vnd.siren+json");
 
 		$ReturnObject['rel'] = new stdClass();
@@ -31,90 +40,146 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		// Entities
 		$ReturnObject['entities'] = new stdClass();
 
-		$E = array();
-		$Entities = array();
-		$Entities['rel'] = new stdClass();
+		$SearchQuery = "SELECT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type as Type,bbc.Sort_Order as Sort_Order_2, bbc.Sort_Order_2 as Sort_order_3, bbc.Image as Category_Image, bbc.Hex FROM building_block b";
+		$SearchQuery .= " JOIN building_block_category bbc ON b.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
 
-		$Entities_rel = array();
-		$Entities_rel[0] = "properties:https://kin-lane.github.io/buildingblock/schemas/buildingblocks.json";
-		$Entities_rel[0] = "urn:x-resource:name:buildingblock";
-		$Entities['rel'] = $Entities_rel;
+		if($query!='')
+			{
+			$SearchQuery .= " WHERE b.Name LIKE '%" . $query . "%'";
+			}
 
-		$Entities['class'] = new stdClass();
-		$Entities['class'] = "buildingblock";
+		$SearchQuery .= " ORDER BY " . $sort . " " . $order . " LIMIT " . $page . "," . $count;
+		//echo $SearchQuery . "<br />";
 
-		$Entities['properties'] = array();
+		$DatabaseResult = mysql_query($SearchQuery) or die('Query failed: ' . mysql_error());
 
-		$Entities['properties']['id'] = 0;
-		$Entities['properties']['name'] = "";
-		$Entities['properties']['about'] = "";
-		$Entities['properties']['post_date'] = "";
-		$Entities['properties']['sort_order'] = 0;
-		$Entities['properties']['url'] = "";
+		while ($Database = mysql_fetch_assoc($DatabaseResult))
+			{
 
-		$Entities['properties']['category'] = array();
-		$Entities['properties']['category']['id'] = 0;
-		$Entities['properties']['category']['name'] = "";
-		$Entities['properties']['category']['sort_order'] = 0;
-		$Entities['properties']['category']['sort_order_2'] = 0;
-		$Entities['properties']['category']['type'] = "";
-		$Entities['properties']['category']['image'] = "";
-		$Entities['properties']['category']['hex'] = "";
+			$building_block_id = $Database['Building_Block_ID'];
+			$building_block_category_id = $Database['Building_Block_Category_ID'];
+			$name = $Database['Name'];
+			$about = $Database['About'];
+			$sort_order = $Database['Sort_Order'];
+			$sort_order_2 = $Database['Sort_Order_2'];
+			$sort_order_3 = $Database['Sort_Order_3'];
+			$url = $Database['url'];
 
-		$Entities['properties']['images'] = array();
-		$Entities['properties']['images']['id'] = 0;
-		$Entities['properties']['images']['name'] = "";
-		$Entities['properties']['images']['path'] = "";
-		$Entities['properties']['images']['type'] = "";
-		$Entities['properties']['images']['width'] = 0;
+			$category = $Database['category'];
+			$type = $Database['type'];
+			$category_image = $Database['Category_Image'];
+			$hex = $Database['Hex'];
 
-		$Entities['properties']['urls'] = array();
-		$Entities['properties']['urls']['id'] = 0;
-		$Entities['properties']['urls']['name'] = "";
-		$Entities['properties']['urls']['type'] = "";
-		$Entities['properties']['urls']['url'] = "";
+			$E = array();
+			$Entities = array();
+			$Entities['rel'] = new stdClass();
 
-		$Entities['properties']['tags'] = array();
-		$Entities['properties']['tags']['tag'] = "";
+			$Entities_rel = array();
+			$Entities_rel[0] = "properties:https://kin-lane.github.io/buildingblock/schemas/buildingblocks.json";
+			$Entities_rel[0] = "urn:x-resource:name:buildingblock";
+			$Entities['rel'] = $Entities_rel;
 
-		$Entities['properties']['entities'] = new stdClass();
+			$Entities['class'] = new stdClass();
+			$Entities['class'] = "buildingblock";
 
-		$Relationships = array();
+			$Entities['properties'] = array();
 
-		$R = array();
-		$R['rel'] = new stdClass();
-		$R['rel'] = "urn:x-resource:name:category";
-		$R['href'] = "https://{host}/api/{id}/category";
-		$R['class'] = new stdClass();
-		$R['class'] = "category";
-		array_push($Relationships,$R);
+			$Entities['properties']['id'] = $building_block_id;
+			$Entities['properties']['name'] = $name;
+			$Entities['properties']['about'] = $about;
+			$Entities['properties']['sort_order'] = $sort_order;
+			$Entities['properties']['url'] = "";
 
-		$R = array();
-		$R['rel'] = new stdClass();
-		$R['rel'] = "urn:x-resource:name:organizations";
-		$R['href'] = "https://{host}/api/{id}/organizations";
-		$R['class'] = new stdClass();
-		$R['class'] = "organizations";
-		array_push($Relationships,$R);
+			$Entities['properties']['category'] = array();
+			$Entities['properties']['category']['name'] = $category;
+			$Entities['properties']['category']['sort_order'] = $sort_order_2;
+			$Entities['properties']['category']['sort_order_2'] = $sort_order_2;
+			$Entities['properties']['category']['type'] = $type;
+			$Entities['properties']['category']['image'] = $category_image;
+			$Entities['properties']['category']['hex'] = $hex;
 
-		$R = array();
-		$R['rel'] = new stdClass();
-		$R['rel'] = "urn:x-resource:name:tools";
-		$R['href'] = "https://{host}/api/{id}/tools";
-		$R['class'] = new stdClass();
-		$R['class'] = "tools";
-		array_push($Relationships,$R);
+			// Images
+			$Entities['properties']['images'] = array();
+			$ImageQuery = "SELECT Name,Path,Type,Width FROM building_block_url";
+			$ImageQuery .= " WHERE Building_Block_URL_ID = " . $building_block_id;
+			$ImageResult = mysql_query($ImageQuery) or die('Query failed: ' . mysql_error());
+			while ($Images = mysql_fetch_assoc($ImageResult))
+				{
+				$I = array();
+				$I['name'] = $Images['Name'];
+				$I['path'] = $Images['Path'];
+				$I['type'] = $Images['Type'];
+				$I['width'] = $Images['Width'];
+				array_push($Entities['properties']['images'],$I);
+				}
 
-		$Entities['properties']['entities'] = $Relationships;
+			// URLs
+			$Entities['properties']['urls'] = array();
+			$URLQuery = "SELECT Name,Type,URL FROM building_block_url";
+			$URLQuery .= " WHERE Building_Block_URL_ID = " . $building_block_id;
+			$URLResult = mysql_query($URLQuery) or die('Query failed: ' . mysql_error());
+			while ($URLs = mysql_fetch_assoc($URLResult))
+				{
+				$U = array();
+				$U['name'] = $URLs['Name'];
+				$U['type'] = $URLs['Type'];
+				$U['url'] = $URLs['URL'];
+				array_push($Entities['properties']['urls'],$U);
+				}
 
-		$Entities['links'] = new stdclass();
-		$Links = array();
-		$Links['rel'] = new stdclass();
-		$Links['rel'] = "self";
-		$Links['href'] = "https://{host}/api/buildingblock/{buildingblock_id}";
-		$Entities['links'] = $Links;
+			// Tag
+			$Entities['properties']['tags'] = array();
+			$TagQuery = "SELECT t.Tag FROM building_block_tag_pivot bbtp";
+			$TagQuery .= " JOIN tags t ON bbtp.Tag_ID = t.Tag_ID";
+			$TagQuery .= " WHERE bbtp.Building_Block_URL_ID = " . $building_block_id;
+			$TagResult = mysql_query($TagQuery) or die('Query failed: ' . mysql_error());
+			while ($Tags = mysql_fetch_assoc($TagResult))
+				{
+				$T = array();
+				$T['tag'] = $Tags['Tag'];
+				array_push($Entities['properties']['tags'],$T);
+				}
 
-		array_push($E,$Entities);
+			$Entities['properties']['entities'] = new stdClass();
+
+			$Relationships = array();
+
+			$R = array();
+			$R['rel'] = new stdClass();
+			$R['rel'] = "urn:x-resource:name:category";
+			$R['href'] = "https://{host}/api/{id}/category";
+			$R['class'] = new stdClass();
+			$R['class'] = "category";
+			array_push($Relationships,$R);
+
+			$R = array();
+			$R['rel'] = new stdClass();
+			$R['rel'] = "urn:x-resource:name:organizations";
+			$R['href'] = "https://{host}/api/{id}/organizations";
+			$R['class'] = new stdClass();
+			$R['class'] = "organizations";
+			array_push($Relationships,$R);
+
+			$R = array();
+			$R['rel'] = new stdClass();
+			$R['rel'] = "urn:x-resource:name:tools";
+			$R['href'] = "https://{host}/api/{id}/tools";
+			$R['class'] = new stdClass();
+			$R['class'] = "tools";
+			array_push($Relationships,$R);
+
+			$Entities['properties']['entities'] = $Relationships;
+
+			$Entities['links'] = new stdclass();
+			$Links = array();
+			$Links['rel'] = new stdclass();
+			$Links['rel'] = "self";
+			$Links['href'] = "https://{host}/api/buildingblock/{buildingblock_id}";
+			$Entities['links'] = $Links;
+
+			array_push($E,$Entities);
+			}
+
 		$ReturnObject['entities'] = $Entities;
 
 		$ReturnObject['links'] = new stdclass();
@@ -146,13 +211,6 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		}
 	else
 		{
-
-		if(isset($params['query'])){ $query = trim(mysql_real_escape_string($params['query'])); } else { $query = '';}
-		if(isset($params['page'])){ $page = trim(mysql_real_escape_string($params['page'])); } else { $page = 0;}
-		if(isset($params['count'])){ $count = trim(mysql_real_escape_string($params['count'])); } else { $count = 250;}
-		if(isset($params['sort'])){ $sort = trim(mysql_real_escape_string($params['sort'])); } else { $sort = 'Name';}
-		if(isset($params['order'])){ $order = trim(mysql_real_escape_string($params['order'])); } else { $order = 'DESC';}
-
 
 		$SearchQuery = "SELECT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type as Type FROM building_block b";
 		$SearchQuery .= " JOIN building_block_category bbc ON b.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";

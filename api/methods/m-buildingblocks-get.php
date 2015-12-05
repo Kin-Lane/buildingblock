@@ -203,7 +203,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
 		$ReturnObject['links'] = $Links;
 
-		echo json_encode($ReturnObject);
+		echo format_json(json_encode($ReturnObject));
 
 		}
 	else

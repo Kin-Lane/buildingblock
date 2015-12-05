@@ -114,7 +114,8 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		$Links['href'] = "https://{host}/api/buildingblock/{buildingblock_id}";
 		$Entities['links'] = $Links;
 
-		array_push($ReturnObject['entities'],$E);
+		array_push($E,$Entities);
+		$ReturnObject['entities'] = $Entities;
 
 		$ReturnObject['links'] = new stdclass();
 

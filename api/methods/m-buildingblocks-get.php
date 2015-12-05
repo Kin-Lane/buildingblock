@@ -57,7 +57,9 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$building_block_id = $Database['Building_Block_ID'];
 			$building_block_category_id = $Database['Building_Block_Category_ID'];
 			$name = $Database['Name'];
-			$about = $Database['About'];
+			$about = strip_tags($Database['About']);
+			$about = str_replace(chr(34),"",$about);
+			$about = str_replace(chr(39),"",$about);
 			$sort_order = $Database['Sort_Order'];
 			$sort_order_2 = $Database['Sort_Order_2'];
 			$sort_order_3 = $Database['Sort_Order_3'];

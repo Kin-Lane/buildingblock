@@ -26,8 +26,6 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 	elseif($contentType == 'application/vnd.siren+json')
 		{
 
-		$app->response()->header("Content-Type", "application/vnd.siren+json");
-
 		$ReturnObject['rel'] = new stdClass();
 		$ReturnObject['rel'] = "urn:x-resource:schema:https://kin-lane.github.io/buildingblock/schemas/buildingblocks.json";
 
@@ -203,7 +201,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
 		$ReturnObject['links'] = $Links;
 
-		$app->response()->header("Content-Type", "application/json");
+		$app->response()->header("Content-Type", "application/vnd.siren+json");
 		echo format_json(json_encode($ReturnObject));
 
 		}

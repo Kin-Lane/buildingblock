@@ -141,7 +141,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
 		$ReturnObject['links'] = $Links;
 
-		echo stripslashes(format_json($apis_json));
+		echo stripslashes(format_json($ReturnObject));
 		}
 	else
 		{

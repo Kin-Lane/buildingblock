@@ -99,8 +99,8 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
 			// Images
 			$Entities['properties']['images'] = array();
-			$ImageQuery = "SELECT Name,Path,Type,Width FROM building_block_url";
-			$ImageQuery .= " WHERE Building_Block_URL_ID = " . $building_block_id;
+			$ImageQuery = "SELECT Name,Path,Type,Width FROM building_block_image";
+			$ImageQuery .= " WHERE Building_Block_ID = " . $building_block_id;
 			$ImageResult = mysql_query($ImageQuery) or die('Query failed: ' . mysql_error());
 			while ($Images = mysql_fetch_assoc($ImageResult))
 				{
@@ -115,7 +115,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			// URLs
 			$Entities['properties']['urls'] = array();
 			$URLQuery = "SELECT Name,Type,URL FROM building_block_url";
-			$URLQuery .= " WHERE Building_Block_URL_ID = " . $building_block_id;
+			$URLQuery .= " WHERE Building_Block_ID = " . $building_block_id;
 			$URLResult = mysql_query($URLQuery) or die('Query failed: ' . mysql_error());
 			while ($URLs = mysql_fetch_assoc($URLResult))
 				{
@@ -130,7 +130,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$Entities['properties']['tags'] = array();
 			$TagQuery = "SELECT t.Tag FROM building_block_tag_pivot bbtp";
 			$TagQuery .= " JOIN tags t ON bbtp.Tag_ID = t.Tag_ID";
-			$TagQuery .= " WHERE bbtp.Building_Block_URL_ID = " . $building_block_id;
+			$TagQuery .= " WHERE bbtp.Building_Block_ID = " . $building_block_id;
 			$TagResult = mysql_query($TagQuery) or die('Query failed: ' . mysql_error());
 			while ($Tags = mysql_fetch_assoc($TagResult))
 				{

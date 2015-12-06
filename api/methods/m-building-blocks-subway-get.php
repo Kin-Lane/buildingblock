@@ -73,7 +73,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
 			$Entities['properties']['line'] = $line;
 			$Entities['properties']['sort_order'] = $sort_order;
-      $Entities['properties']['hex'] = $line;
+      $Entities['properties']['hex'] = $hex;
       $Entities['properties']['image'] = $image;
 
 			$Entities['properties']['entities'] = new stdClass();

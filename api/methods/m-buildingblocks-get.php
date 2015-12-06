@@ -55,6 +55,10 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		// Entities
 		$ReturnObject['entities'] = new stdClass();
 
+		// Actions
+		$ReturnObject['actions'] = new stdClass();
+
+		// For Local Array
 		$E = array();
 
 		while ($Database = mysql_fetch_assoc($DatabaseResult))

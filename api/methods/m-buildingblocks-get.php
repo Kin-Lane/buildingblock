@@ -97,9 +97,9 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$Entities['properties'] = array();
 
 			$host = $_SERVER['HTTP_HOST'];
-			$building_block_id = prepareIdOut($building_block_id,$host);
+			$return_building_block_id = prepareIdOut($building_block_id,$host);
 
-			$Entities['properties']['id'] = $building_block_id;
+			$Entities['properties']['id'] = $return_building_block_id;
 			$Entities['properties']['name'] = $name;
 			$Entities['properties']['about'] = $about;
 			$Entities['properties']['sort_order'] = $sort_order;

@@ -26,6 +26,8 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 	elseif($contentType == 'application/vnd.siren+json')
 		{
 
+		var_dump($_SERVER);
+
 		$ReturnObject['rel'] = new stdClass();
 		$ReturnObject['rel'] = "urn:x-resource:schema:https://kin-lane.github.io/buildingblock/schemas/buildingblocks.json";
 

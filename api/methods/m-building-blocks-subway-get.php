@@ -2,10 +2,13 @@
 $route = '/buildingblocks/subway/lines/';
 $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
-	$ReturnObject = array();
+  $ReturnObject = array();
 
- 	$request = $app->request();
+	$request = $app->request();
  	$params = $request->params();
+
+	if(isset($params['page'])){ $page = trim(mysql_real_escape_string($params['page'])); } else { $page = 0;}
+
 
 	if($contentType == 'application/apis+json')
 		{

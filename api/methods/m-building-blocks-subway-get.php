@@ -28,7 +28,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		$ReturnObject['rel'] = new stdClass();
 		$ReturnObject['rel'] = "urn:x-resource:schema:http://kin-lane.github.io/buildingblock/schemas/line.json";
 
-    $SearchQuery = "SELECT bbc.Type,bbc.Image,bbc.Hex FROM building_block_category bbc";
+    $SearchQuery = "SELECT bbc.Type,bbc.Image,bbc.Hex,bbc.Sort_Order,bbc.Sort_Order_2 FROM building_block_category bbc";
 		$SearchQuery .= " ORDER BY Sort_Order ASC";
 		//echo $SearchQuery . "<br />";
 		$DatabaseResult = mysql_query($SearchQuery) or die('Query failed: ' . mysql_error());

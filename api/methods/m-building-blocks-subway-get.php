@@ -35,8 +35,8 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
 		// Properties
 		$ReturnObject['properties'] = array();
-		$ReturnObject['properties']['totalItems'] = mysql_num_rows($CountQuery);
-		$ReturnObject['properties']['currentCount'] = mysql_num_rows($CountQuery);
+		$ReturnObject['properties']['totalItems'] = mysql_num_rows($DatabaseResult);
+		$ReturnObject['properties']['currentCount'] = mysql_num_rows($DatabaseResult);
 
 		// Entities
 		$ReturnObject['entities'] = new stdClass();

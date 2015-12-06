@@ -27,7 +27,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 			$CountQuery = "SELECT b.Building_Block_ID FROM building_block b WHERE b.Building_Block_ID = " . $building_block_id;
 			$CountResult = mysql_query($CountQuery) or die('Query failed: ' . mysql_error());
 
-			$SearchQuery = "SELECT * FROM building_block b";
+			$SearchQuery = "SELECT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type as Type,bbc.Sort_Order as Sort_Order_2, bbc.Sort_Order_2 as Sort_Order_3, bbc.Image as Category_Image, bbc.Hex FROM building_block b";
 			$SearchQuery .= " JOIN building_block_category bbc ON b.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
 			$SearchQuery .= " WHERE b.Building_Block_ID = " . $building_block_id;
 			//echo $SearchQuery . "<br />";

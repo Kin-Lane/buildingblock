@@ -20,20 +20,12 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 	elseif($contentType == 'application/vnd.siren+json')
 		{
 
-			//var_dump($_SERVER);
-
-			$host = $_SERVER['HTTP_HOST'];
-			$remote_address = $_SERVER['REMOTE_ADDR'];
-
 			$ReturnObject['rel'] = new stdClass();
 			$ReturnObject['rel'] = "urn:x-resource:schema:http://kin-lane.github.io/buildingblock/schemas/buildingblocks.json";
 
 			// Just Count
 			$CountQuery = "SELECT b.Building_Block_ID FROM building_block b";
-			$CountQuery .= " JOIN building_block_category bbc ON b.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
-			$CountQuery .= " Building_Block_ID = " . $building_block_id;
-
-			//echo $CountQuery . "<br />";
+			$$CountQuery .= " WHERE b.Building_Block_ID = " . $building_block_id;
 			$CountResult = mysql_query($CountQuery) or die('Query failed: ' . mysql_error());
 
 			$SearchQuery = "SELECT * FROM building_block WHERE Building_Block_ID = " . $building_block_id;

@@ -7,6 +7,11 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 
 	$ReturnObject = array();
 
+	$request = $app->request();
+ 	$params = $request->params();	
+
+	if(isset($params['page'])){ $page = trim(mysql_real_escape_string($params['page'])); } else { $page = 0;}
+
 	if($contentType == 'application/apis+json')
 		{
 
@@ -195,17 +200,6 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 			$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
 			array_push($Links,$L);
 
-			// Previous
-			if($page!=0)
-				{
-				$page = $page - 250;
-				$L = array();
-				$L['rel'] = new stdClass();
-				$L['rel'] = "previous";
-				$href = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/?page=' . $page;
-				$L['href'] = $href;
-				array_push($Links,$L);
-				}
 
 			// Next
 			$page = $page + 250;

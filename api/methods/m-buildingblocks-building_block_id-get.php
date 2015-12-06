@@ -8,7 +8,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 	$ReturnObject = array();
 
 	$request = $app->request();
- 	$params = $request->params();	
+ 	$params = $request->params();
 
 	if(isset($params['page'])){ $page = trim(mysql_real_escape_string($params['page'])); } else { $page = 0;}
 
@@ -164,67 +164,78 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 			$A['title'] = "Add a new building block";
 			$A['method'] = "POST";
 			$A['fields'] = array();
-
 			$F = array();
 			$F['name'] = "building_block_category_id";
 			$F['type'] = "integer";
 			array_push($A['fields'],$F);
-
 			$F = array();
 			$F['name'] = "name";
 			$F['type'] = "string";
 			array_push($A['fields'],$F);
-
 			$F = array();
 			$F['name'] = "about";
 			$F['type'] = "string";
 			array_push($A['fields'],$F);
-
 			$F = array();
 			$F['name'] = "sort_order";
 			$F['type'] = "integer";
 			array_push($A['fields'],$F);
+			array_push($Actions,$A);
 
+			$A = array();
+			$A['name'] = "update-buildingblock";
+			$A['href'] = 'http://' . $host . '/buildingblocks/';
+			$A['title'] = "Update this building block";
+			$A['method'] = "PUT";
+			$A['fields'] = array();
+			$F = array();
+			$F['name'] = "building_block_id";
+			$F['type'] = "string";
+			array_push($A['fields'],$F);
+			$F = array();
+			$F['name'] = "building_block_category_id";
+			$F['type'] = "integer";
+			array_push($A['fields'],$F);
+			$F = array();
+			$F['name'] = "name";
+			$F['type'] = "string";
+			array_push($A['fields'],$F);
+			$F = array();
+			$F['name'] = "about";
+			$F['type'] = "string";
+			array_push($A['fields'],$F);
+			$F = array();
+			$F['name'] = "sort_order";
+			$F['type'] = "integer";
+			array_push($A['fields'],$F);
+			array_push($Actions,$A);
+
+			$A = array();
+			$A['name'] = "delete-buildingblock";
+			$A['href'] = 'http://' . $host . '/buildingblocks/';
+			$A['title'] = "DELETE this building block";
+			$A['method'] = "DELETE";
+			$A['fields'] = array();
+			$F = array();
+			$F['name'] = "building_block_id";
+			$F['type'] = "string";
+			array_push($A['fields'],$F);
 			array_push($Actions,$A);
 
 			$ReturnObject['actions'] = $Actions;
 
 			// Links
 			$ReturnObject['links'] = new stdclass();
-			$Links = array();
+			//$Links = array();
 
 			// Self
-			$L = array();
-			$L['rel'] = new stdClass();
-			$L['rel'] = "self";
-			$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
-			array_push($Links,$L);
+			//$L = array();
+			//$L['rel'] = new stdClass();
+			//$L['rel'] = "self";
+			//$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
+			//array_push($Links,$L);
 
-
-			// Next
-			$page = $page + 250;
-			$L = array();
-			$L['rel'] = new stdClass();
-			$L['rel'] = "next";
-			$href = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/?page=' . $page;
-			$L['href'] = $href;
-			array_push($Links,$L);
-
-			// Category ?? aka AREA
-			$L = array();
-			$L['rel'] = new stdClass();
-			$L['rel'] = "up";
-			$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
-			array_push($Links,$L);
-
-			// TYpe ?? aka Line
-			$L = array();
-			$L['rel'] = new stdClass();
-			$L['rel'] = "up";
-			$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
-			array_push($Links,$L);
-
-			$ReturnObject['links'] = $Links;
+			//$ReturnObject['links'] = $Links;
 
 			$app->response()->header("Content-Type", "application/vnd.siren+json");
 			echo stripslashes(format_json(json_encode($ReturnObject)));

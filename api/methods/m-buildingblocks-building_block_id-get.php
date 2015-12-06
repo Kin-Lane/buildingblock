@@ -9,7 +9,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 	echo $contentType . "<br />";
 	if($contentType == 'application/apis+json')
 		{
-
+			echo "1";
 		$app->response()->header("Content-Type", "application/json");
 
 		$apis_json_url = "http://" . $githuborg . ".github.io/" . $githubrepo . "/apis.json";
@@ -19,7 +19,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 		}
 	elseif($contentType == 'application/vnd.siren+json')
 		{
-
+			echo "2";
 			$ReturnObject['rel'] = new stdClass();
 			$ReturnObject['rel'] = "urn:x-resource:schema:http://kin-lane.github.io/buildingblock/schemas/buildingblocks.json";
 

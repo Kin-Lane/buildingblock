@@ -6,7 +6,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 	$building_block_id = prepareIdIn($building_block_id,$host);
 
 	$ReturnObject = array();
-	echo $contentType . "<br />";
+
 	if($contentType == 'application/apis+json')
 		{
 
@@ -28,7 +28,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 			$CountResult = mysql_query($CountQuery) or die('Query failed: ' . mysql_error());
 
 			$SearchQuery = "SELECT * FROM building_block b";
-			$SearchQuery .= " JOIN building_block_category bbc ON b.Building_Block_ID = bbc.BuildingBlock_ID";
+			$SearchQuery .= " JOIN building_block_category bbc ON b.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
 			$SearchQuery .= " WHERE b.Building_Block_ID = " . $building_block_id;
 			//echo $SearchQuery . "<br />";
 			$DatabaseResult = mysql_query($SearchQuery) or die('Query failed: ' . mysql_error());

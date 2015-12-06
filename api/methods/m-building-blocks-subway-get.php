@@ -31,7 +31,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		$ReturnObject['rel'] = new stdClass();
 		$ReturnObject['rel'] = "urn:x-resource:schema:http://kin-lane.github.io/buildingblock/schemas/line.json";
 
-    $SearchQuery = "SELECT DISTINCT bbc.Type,bbc.Image,bbc.Hex,bbc.Sort_Order,bbc.Sort_Order_2 FROM building_block_category bbc";
+    $SearchQuery = "SELECT DISTINCT bbc.Type,bbc.Image,bbc.Hex,bbc.Sort_Order_2 FROM building_block_category bbc";
     $SearchQuery .= " WHERE Sort_Order_2 > 0";
 		$SearchQuery .= " ORDER BY Sort_Order_2 ASC";
 		//echo $SearchQuery . "<br />";
@@ -54,8 +54,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		while ($Database = mysql_fetch_assoc($DatabaseResult))
 			{
 			$line = $Database['Type'];
-			$sort_order = $Database['Sort_Order'];
-			$sort_order_2 = $Database['Sort_Order_2'];
+			$sort_order = $Database['Sort_Order_2'];
 			$hex = $Database['Hex'];
 
 			$Entities = array();
@@ -73,7 +72,6 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
 			$Entities['properties']['line'] = $line;
 			$Entities['properties']['sort_order'] = $sort_order;
-      $Entities['properties']['sort_order_2'] = $sort_order_2;
       $Entities['properties']['hex'] = $line;
 
 			$Entities['properties']['entities'] = new stdClass();

@@ -24,6 +24,8 @@ $Params = $request->params();
 $mediaType = $request->getMediaType();
 $contentType = $request->getContentType();
 
+echo "Content Type: " . $contentType . "<br />";
+
 if(isset($Params['appid'])){ $appid = $Params['appid']; } else { $appid = ""; }
 if(isset($Params['appkey'])){ $appkey = $Params['appkey']; } else { $appkey = ""; }
 

@@ -130,7 +130,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 				$R = array();
 				$R['rel'] = new stdClass();
 				$R['rel'] = "urn:x-resource:name:category";
-				$R['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/category/';
+				$R['href'] = 'http://' . $host . '/buildingblocks/' . $return_building_block_id . '/category/';
 				$R['class'] = new stdClass();
 				$R['class'] = "category";
 				array_push($Relationships,$R);
@@ -138,7 +138,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 				$R = array();
 				$R['rel'] = new stdClass();
 				$R['rel'] = "urn:x-resource:name:organizations";
-				$R['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/organizations/';
+				$R['href'] = 'http://' . $host . '/buildingblocks/' . $return_building_block_id . '/organizations/';
 				$R['class'] = new stdClass();
 				$R['class'] = "organizations";
 				array_push($Relationships,$R);
@@ -146,7 +146,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 				$R = array();
 				$R['rel'] = new stdClass();
 				$R['rel'] = "urn:x-resource:name:tools";
-				$R['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/tools/';
+				$R['href'] = 'http://' . $host . '/buildingblocks/' . $return_building_block_id . '/tools/';
 				$R['class'] = new stdClass();
 				$R['class'] = "tools";
 				array_push($Relationships,$R);
@@ -160,7 +160,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 
 			$A = array();
 			$A['name'] = "add-buildingblock";
-			$A['href'] = 'http://' . $host . '/buildingblocks/';
+			$A['href'] = 'http://' . $host . '/buildingblocks/' . $return_building_block_id . '/';
 			$A['title'] = "Add a new building block";
 			$A['method'] = "POST";
 			$A['fields'] = array();
@@ -184,7 +184,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 
 			$A = array();
 			$A['name'] = "update-buildingblock";
-			$A['href'] = 'http://' . $host . '/buildingblocks/';
+			$A['href'] = 'http://' . $host . '/buildingblocks/' . $return_building_block_id . '/';
 			$A['title'] = "Update this building block";
 			$A['method'] = "PUT";
 			$A['fields'] = array();
@@ -212,7 +212,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 
 			$A = array();
 			$A['name'] = "delete-buildingblock";
-			$A['href'] = 'http://' . $host . '/buildingblocks/';
+			$A['href'] = 'http://' . $host . '/buildingblocks/' . $return_building_block_id . '/';
 			$A['title'] = "DELETE this building block";
 			$A['method'] = "DELETE";
 			$A['fields'] = array();

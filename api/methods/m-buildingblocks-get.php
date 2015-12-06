@@ -206,7 +206,9 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		$F['value'] = "value";
 		array_push($A['fields'],$F);
 
-		array_push($ReturnObject['actions'],$Actions);
+		array_push($Actions,$A);
+
+		$ReturnObject['actions'] = $Actions;
 
 		// Links
 		$ReturnObject['links'] = new stdclass();

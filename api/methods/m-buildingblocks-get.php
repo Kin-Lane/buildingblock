@@ -26,10 +26,13 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 	elseif($contentType == 'application/vnd.siren+json')
 		{
 
-		var_dump($_SERVER);
+		//var_dump($_SERVER);
+
+		$host = $_SERVER['HTTP_HOST'];
+		$remote_address = $_SERVER['REMOTE_ADDR'];
 
 		$ReturnObject['rel'] = new stdClass();
-		$ReturnObject['rel'] = "urn:x-resource:schema:https://kin-lane.github.io/buildingblock/schemas/buildingblocks.json";
+		$ReturnObject['rel'] = "urn:x-resource:schema:http://kin-lane.github.io/buildingblock/schemas/buildingblocks.json";
 
 		// Just Count
 		$CountQuery = "SELECT b.Building_Block_ID FROM building_block b";
@@ -84,7 +87,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$Entities['rel'] = new stdClass();
 
 			$Entities_rel = array();
-			$Entities_rel[0] = "properties:https://kin-lane.github.io/buildingblock/schemas/buildingblocks.json";
+			$Entities_rel[0] = "properties:http://kin-lane.github.io/buildingblock/schemas/buildingblocks.json";
 			$Entities_rel[0] = "urn:x-resource:name:buildingblock";
 			$Entities['rel'] = $Entities_rel;
 
@@ -156,7 +159,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$R = array();
 			$R['rel'] = new stdClass();
 			$R['rel'] = "urn:x-resource:name:category";
-			$R['href'] = "https://{host}/api/{id}/category";
+			$R['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/category/';
 			$R['class'] = new stdClass();
 			$R['class'] = "category";
 			array_push($Relationships,$R);
@@ -164,7 +167,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$R = array();
 			$R['rel'] = new stdClass();
 			$R['rel'] = "urn:x-resource:name:organizations";
-			$R['href'] = "https://{host}/api/{id}/organizations";
+			$R['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/organizations/';
 			$R['class'] = new stdClass();
 			$R['class'] = "organizations";
 			array_push($Relationships,$R);
@@ -172,7 +175,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$R = array();
 			$R['rel'] = new stdClass();
 			$R['rel'] = "urn:x-resource:name:tools";
-			$R['href'] = "https://{host}/api/{id}/tools";
+			$R['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/tools/';
 			$R['class'] = new stdClass();
 			$R['class'] = "tools";
 			array_push($Relationships,$R);
@@ -183,7 +186,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$Links = array();
 			$Links['rel'] = new stdclass();
 			$Links['rel'] = "self";
-			$Links['href'] = "https://{host}/api/buildingblock/{buildingblock_id}";
+			$Links['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
 			$Entities['links'] = $Links;
 
 			array_push($E,$Entities);
@@ -197,15 +200,29 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 
 		$A = array();
 		$A['name'] = "add-buildingblock";
-		$A['href'] = "https://{host}/{base}/";
+		$A['href'] = 'http://' . $host . '/buildingblocks/';
 		$A['title'] = "Add a new building block";
 		$A['method'] = "POST";
 		$A['fields'] = array();
 
 		$F = array();
-		$F['name'] = "Field Name";
-		$F['type'] = "text";
-		$F['value'] = "value";
+		$F['name'] = "building_block_category_id";
+		$F['type'] = "integer";
+		array_push($A['fields'],$F);
+
+		$F = array();
+		$F['name'] = "name";
+		$F['type'] = "string";
+		array_push($A['fields'],$F);
+
+		$F = array();
+		$F['name'] = "about";
+		$F['type'] = "string";
+		array_push($A['fields'],$F);
+
+		$F = array();
+		$F['name'] = "sort_order";
+		$F['type'] = "integer";
 		array_push($A['fields'],$F);
 
 		array_push($Actions,$A);
@@ -216,33 +233,47 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		$ReturnObject['links'] = new stdclass();
 		$Links = array();
 
-		$L = array();
-		$L['rel'] = new stdClass();
-		$L['rel'] = "previous";
-		$L['href'] = "";
-		array_push($Links,$L);
-
+		// Self
 		$L = array();
 		$L['rel'] = new stdClass();
 		$L['rel'] = "self";
-		$L['href'] = "";
+		$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
 		array_push($Links,$L);
 
+		// Previous
+		if($page!=0)
+			{
+			$previous = $page - 250;
+			$L = array();
+			$L['rel'] = new stdClass();
+			$L['rel'] = "previous";
+			$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
+			array_push($Links,$L);
+			}
+
+		// Next
+		$next = $page + 250;
 		$L = array();
 		$L['rel'] = new stdClass();
 		$L['rel'] = "next";
-		$L['href'] = "";
+		$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
 		array_push($Links,$L);
 
+		// Category ?? aka AREA
 		$L = array();
 		$L['rel'] = new stdClass();
 		$L['rel'] = "up";
-		$L['href'] = "";
+		$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
+		array_push($Links,$L);
+
+		// TYpe ?? aka Line
+		$L = array();
+		$L['rel'] = new stdClass();
+		$L['rel'] = "up";
+		$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
 		array_push($Links,$L);
 
 		$ReturnObject['links'] = $Links;
-
-
 
 		$app->response()->header("Content-Type", "application/vnd.siren+json");
 		echo stripslashes(format_json(json_encode($ReturnObject)));

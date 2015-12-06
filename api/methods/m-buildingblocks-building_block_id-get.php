@@ -59,6 +59,9 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 				$category_image = $Database['Category_Image'];
 				$hex = $Database['Hex'];
 
+				$host = $_SERVER['HTTP_HOST'];
+				$return_building_block_id = prepareIdOut($building_block_id,$host);
+
 				$ReturnObject['properties']['id'] = $return_building_block_id;
 				$ReturnObject['properties']['name'] = $name;
 				$ReturnObject['properties']['about'] = $about;

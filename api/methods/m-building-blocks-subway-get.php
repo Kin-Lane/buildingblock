@@ -149,15 +149,8 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		$L = array();
 		$L['rel'] = new stdClass();
 		$L['rel'] = "next";
-		$href = 'http://' . $host . '/buildingblocks/subway/line//?page=' . $page;
+		$href = 'http://' . $host . '/buildingblocks/subway/line/?page=' . $page;
 		$L['href'] = $href;
-		array_push($Links,$L);
-
-		// Category ?? aka AREA
-		$L = array();
-		$L['rel'] = new stdClass();
-		$L['rel'] = "up";
-		$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
 		array_push($Links,$L);
 
 		$ReturnObject['links'] = $Links;

@@ -243,20 +243,22 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 		// Previous
 		if($page!=0)
 			{
-			$previous = $page - 250;
+			$page = $page - 250;
 			$L = array();
 			$L['rel'] = new stdClass();
 			$L['rel'] = "previous";
-			$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
+			$href = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/?page=' . $page;
+			$L['href'] = $href;
 			array_push($Links,$L);
 			}
 
 		// Next
-		$next = $page + 250;
+		$page = $page + 250;
 		$L = array();
 		$L['rel'] = new stdClass();
 		$L['rel'] = "next";
-		$L['href'] = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/';
+		$href = 'http://' . $host . '/buildingblocks/' . $building_block_id . '/?page=' . $page;
+		$L['href'] = $href;
 		array_push($Links,$L);
 
 		// Category ?? aka AREA

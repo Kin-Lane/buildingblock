@@ -56,6 +56,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$line = $Database['Type'];
 			$sort_order = $Database['Sort_Order_2'];
 			$hex = $Database['Hex'];
+      $image = $Database['Image'];
 
 			$Entities = array();
 			$Entities['rel'] = new stdClass();
@@ -73,6 +74,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$Entities['properties']['line'] = $line;
 			$Entities['properties']['sort_order'] = $sort_order;
       $Entities['properties']['hex'] = $line;
+      $Entities['properties']['image'] = $image;
 
 			$Entities['properties']['entities'] = new stdClass();
 

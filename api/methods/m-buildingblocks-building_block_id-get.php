@@ -189,10 +189,6 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 			$A['method'] = "PUT";
 			$A['fields'] = array();
 			$F = array();
-			$F['name'] = "building_block_id";
-			$F['type'] = "string";
-			array_push($A['fields'],$F);
-			$F = array();
 			$F['name'] = "building_block_category_id";
 			$F['type'] = "integer";
 			array_push($A['fields'],$F);
@@ -215,11 +211,6 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 			$A['href'] = 'http://' . $host . '/buildingblocks/' . $return_building_block_id . '/';
 			$A['title'] = "DELETE this building block";
 			$A['method'] = "DELETE";
-			$A['fields'] = array();
-			$F = array();
-			$F['name'] = "building_block_id";
-			$F['type'] = "string";
-			array_push($A['fields'],$F);
 			array_push($Actions,$A);
 
 			$ReturnObject['actions'] = $Actions;

@@ -108,7 +108,7 @@ $app->get($route, function ()  use ($app,$contentType,$githuborg,$githubrepo){
 			$Entities['properties']['category'] = array();
 			$Entities['properties']['category']['name'] = $category;
 			$Entities['properties']['category']['sort_order'] = $sort_order_2;
-			$Entities['properties']['category']['sort_order_2'] = $sort_order_2;
+			$Entities['properties']['category']['sort_order_2'] = $sort_order_3;
 			$Entities['properties']['category']['type'] = $type;
 			$Entities['properties']['category']['image'] = $category_image;
 			$Entities['properties']['category']['hex'] = $hex;

@@ -76,7 +76,7 @@ $app->get($route, function ($building_block_id)  use ($app,$contentType,$githubo
 				$ReturnObject['properties']['category'] = array();
 				$ReturnObject['properties']['category']['name'] = $category;
 				$ReturnObject['properties']['category']['sort_order'] = $sort_order_2;
-				$ReturnObject['properties']['category']['sort_order_2'] = $sort_order_2;
+				$ReturnObject['properties']['category']['sort_order_2'] = $sort_order_3;
 				$ReturnObject['properties']['category']['type'] = $type;
 				$ReturnObject['properties']['category']['image'] = $category_image;
 				$ReturnObject['properties']['category']['hex'] = $hex;

@@ -32,7 +32,7 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 		$ReturnObject['rel'] = "urn:x-resource:schema:http://kin-lane.github.io/buildingblock/schemas/line.json";
 
     $SearchQuery = "SELECT DISTINCT bbc.Type,bbc.Image,bbc.Hex,bbc.Sort_Order_2 FROM building_block_category bbc";
-    $SearchQuery .= " WHERE bbc.Type = '" . $line "'";
+    $SearchQuery .= " WHERE bbc.Type = '" . $line . "'";
 		//echo $SearchQuery . "<br />";
 		$DatabaseResult = mysql_query($SearchQuery) or die('Query failed: ' . mysql_error());
 

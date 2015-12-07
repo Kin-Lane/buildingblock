@@ -43,7 +43,7 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 		$ReturnObject['entities'] = new stdClass();
 
 		// Actions
-		$ReturnObject['actions'] = new stdClass();
+		//$ReturnObject['actions'] = new stdClass();
 
 		// For Local Array
 		$E = array();
@@ -84,7 +84,7 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 			array_push($Relationships,$R);
 
 			$ReturnObject['entities'] = $Relationships;
-      
+
 			array_push($E,$Entities);
 			}
 
@@ -119,27 +119,6 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 		$L['rel'] = new stdClass();
 		$L['rel'] = "self";
 		$L['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $line;
-		array_push($Links,$L);
-
-		// Previous
-		if($page!=0)
-			{
-			$page = $page - 1;
-			$L = array();
-			$L['rel'] = new stdClass();
-			$L['rel'] = "previous";
-			$href = 'http://' . $host . '/buildingblocks/subway/line/?page=' . $page;
-			$L['href'] = $href;
-			array_push($Links,$L);
-			}
-
-		// Next
-		$page = $page + 1;
-		$L = array();
-		$L['rel'] = new stdClass();
-		$L['rel'] = "next";
-		$href = 'http://' . $host . '/buildingblocks/subway/line/?page=' . $page;
-		$L['href'] = $href;
 		array_push($Links,$L);
 
 		$ReturnObject['links'] = $Links;

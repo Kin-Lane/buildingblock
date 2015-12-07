@@ -95,8 +95,8 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 
     $R = array();
     $R['rel'] = new stdClass();
-    $R['rel'] = "urn:x-resource:name:category";
-    $R['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $line . '/areas';
+    $R['rel'] = "urn:x-resource:name:areas";
+    $R['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $thisline . '/areas';
     $R['class'] = new stdClass();
     $R['class'] = "areas";
     array_push($Relationships,$R);
@@ -131,7 +131,7 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 		$L = array();
 		$L['rel'] = new stdClass();
 		$L['rel'] = "self";
-		$L['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $line;
+		$L['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $thisline;
 		array_push($Links,$L);
 
     if($previous_line != "")

@@ -143,15 +143,15 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
     		array_push($Links,$L);
       }
 
-      if($next_line != "")
-        {
-          // Previous
-      		$L = array();
-      		$L['rel'] = new stdClass();
-      		$L['rel'] = "next";
-      		$L['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $next_line;
-      		array_push($Links,$L);
-        }
+    if($next_line != "")
+      {
+        // Previous
+    		$L = array();
+    		$L['rel'] = new stdClass();
+    		$L['rel'] = "next";
+    		$L['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $next_line;
+    		array_push($Links,$L);
+      }
 
 		$ReturnObject['links'] = $Links;
 

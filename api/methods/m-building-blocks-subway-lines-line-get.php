@@ -40,7 +40,7 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 		$ReturnObject['properties'] = array();
 
 		// Entities
-		//$ReturnObject['entities'] = new stdClass();
+		$ReturnObject['entities'] = new stdClass();
 
 		// Actions
 		$ReturnObject['actions'] = new stdClass();
@@ -73,8 +73,6 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
       $Entities['properties']['hex'] = $hex;
       $Entities['properties']['image'] = $image;
 
-			$Entities['properties']['entities'] = new stdClass();
-
 			$Relationships = array();
 
 			$R = array();
@@ -85,15 +83,8 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 			$R['class'] = "areas";
 			array_push($Relationships,$R);
 
-			$Entities['properties']['entities'] = $Relationships;
-
-			$Entities['links'] = new stdclass();
-			$Links = array();
-			$Links['rel'] = new stdclass();
-			$Links['rel'] = "self";
-			$Links['href'] = 'http://' . $host . '/buildingblocks/subway/' . $line . '/';
-			$Entities['links'] = $Links;
-
+			$ReturnObject['entities'] = $Relationships;
+      
 			array_push($E,$Entities);
 			}
 

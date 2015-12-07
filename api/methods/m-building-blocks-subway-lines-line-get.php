@@ -68,6 +68,7 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
         $line = $Database['Type'];
         $next_line = $line;
         }
+      echo $thisline . " == " . $line . "<br />";
       if($thisline==$line)
         {
   			$E['line'] = $line;

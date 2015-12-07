@@ -8,7 +8,7 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
  	$params = $request->params();
 
 	if(isset($params['page'])){ $page = trim(mysql_real_escape_string($params['page'])); } else { $page = 0;}
-  $line = trim(mysql_real_escape_string($line));
+  $thisline = trim(mysql_real_escape_string($line));
 
 	if($contentType == 'application/apis+json')
 		{
@@ -32,7 +32,8 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 		$ReturnObject['rel'] = "urn:x-resource:schema:http://kin-lane.github.io/buildingblock/schemas/line.json";
 
     $SearchQuery = "SELECT DISTINCT bbc.Type,bbc.Image,bbc.Hex,bbc.Sort_Order_2 FROM building_block_category bbc";
-    $SearchQuery .= " WHERE bbc.Type = '" . $line . "'";
+    $SearchQuery .= " WHERE Sort_Order_2 > 0";
+		$SearchQuery .= " ORDER BY Sort_Order_2 ASC";
 		//echo $SearchQuery . "<br />";
 		$DatabaseResult = mysql_query($SearchQuery) or die('Query failed: ' . mysql_error());
 
@@ -48,17 +49,42 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 		// For Local Array
 		$E = array();
 
+    $previous = 0;
+    $previous_line = "";
+
+    $next = 0;
+    $next_line = "";
+
 		while ($Database = mysql_fetch_assoc($DatabaseResult))
 			{
-			$line = $Database['Type'];
+
+      $line = $Database['Type'];
 			$sort_order = $Database['Sort_Order_2'];
 			$hex = $Database['Hex'];
       $image = $Database['Image'];
 
-			$E['line'] = $line;
-			$E['sort_order'] = $sort_order;
-      $E['hex'] = $hex;
-      $E['image'] = $image;
+      if($next == 1)
+        {
+        $line = $Database['Type'];
+        $next_line = $line;
+        }
+      if($thisline==$line)
+        {
+  			$E['line'] = $line;
+  			$E['sort_order'] = $sort_order;
+        $E['hex'] = $hex;
+        $E['image'] = $image;
+
+        $next = 1;
+        $previous = 1;
+        }
+      else
+        {
+        if($previous==0)
+          {
+          $previous_line = $line;
+          }
+        }
 
 			}
 
@@ -106,6 +132,26 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 		$L['rel'] = "self";
 		$L['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $line;
 		array_push($Links,$L);
+
+    if($previous_line != "")
+      {
+        // Previous
+    		$L = array();
+    		$L['rel'] = new stdClass();
+    		$L['rel'] = "self";
+    		$L['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $previous_line;
+    		array_push($Links,$L);
+      }
+
+      if($next_line != "")
+        {
+          // Previous
+      		$L = array();
+      		$L['rel'] = new stdClass();
+      		$L['rel'] = "self";
+      		$L['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $next_line;
+      		array_push($Links,$L);
+        }
 
 		$ReturnObject['links'] = $Links;
 

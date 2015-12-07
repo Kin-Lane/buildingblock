@@ -55,40 +55,26 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 			$hex = $Database['Hex'];
       $image = $Database['Image'];
 
-			$Entities = array();
-			$Entities['rel'] = new stdClass();
+			$E['line'] = $line;
+			$E['sort_order'] = $sort_order;
+      $E['hex'] = $hex;
+      $E['image'] = $image;
 
-			$Entities_rel = array();
-			$Entities_rel[0] = "properties:http://kin-lane.github.io/buildingblock/schemas/line.json";
-			$Entities_rel[0] = "urn:x-resource:name:buildingblock";
-			$Entities['rel'] = $Entities_rel;
-
-			$Entities['class'] = new stdClass();
-			$Entities['class'] = "line";
-
-			$Entities['properties'] = array();
-
-			$Entities['properties']['line'] = $line;
-			$Entities['properties']['sort_order'] = $sort_order;
-      $Entities['properties']['hex'] = $hex;
-      $Entities['properties']['image'] = $image;
-
-			$Relationships = array();
-
-			$R = array();
-			$R['rel'] = new stdClass();
-			$R['rel'] = "urn:x-resource:name:category";
-			$R['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $line . '/areas';
-			$R['class'] = new stdClass();
-			$R['class'] = "areas";
-			array_push($Relationships,$R);
-
-			$ReturnObject['entities'] = $Relationships;
-
-			array_push($E,$Entities);
 			}
 
 		$ReturnObject['properties'] = $E;
+
+    $Relationships = array();
+
+    $R = array();
+    $R['rel'] = new stdClass();
+    $R['rel'] = "urn:x-resource:name:category";
+    $R['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $line . '/areas';
+    $R['class'] = new stdClass();
+    $R['class'] = "areas";
+    array_push($Relationships,$R);
+
+    $ReturnObject['entities'] = $Relationships;
 
 		// Actions
 		// $ReturnObject['actions'] = new stdclass();

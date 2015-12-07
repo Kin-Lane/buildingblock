@@ -68,8 +68,7 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
         $line = $Database['Type'];
         $next_line = $line;
         }
-      echo $thisline . " == " . $line . "<br />";
-      if($thisline==$line)
+      if(strtolower($thisline)==strtolower($line))
         {
   			$E['line'] = $line;
   			$E['sort_order'] = $sort_order;

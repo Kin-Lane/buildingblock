@@ -66,6 +66,7 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
       if($next == 1)
         {
         $next_line = $line;
+        $next = 2;
         }
 
       if(strtolower($thisline)==strtolower($line))

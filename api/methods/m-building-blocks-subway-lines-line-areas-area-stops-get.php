@@ -32,7 +32,7 @@ $app->get($route, function ($line,$area)  use ($app,$contentType,$githuborg,$git
 		$ReturnObject['rel'] = new stdClass();
 		$ReturnObject['rel'] = "urn:x-resource:schema:http://kin-lane.github.io/buildingblock/schemas/line.json";
 
-    $SearchQuery = "SELECT bb.Building_Block_ID,bb.Name,bb.About FROM building_blocks bb";
+    $SearchQuery = "SELECT bb.Building_Block_ID,bb.Name,bb.About FROM building_block bb";
     $SearchQuery .= " JOIN building_block_category bbc ON bb.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
     $SearchQuery .= " WHERE bbc.Type = '" . $thisline . "' AND bbc.NAME = '" . $thisarea . "'";
 		$SearchQuery .= " ORDER BY Sort_Order ASC";

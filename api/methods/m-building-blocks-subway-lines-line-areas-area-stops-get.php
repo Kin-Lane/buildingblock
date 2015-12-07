@@ -30,7 +30,7 @@ $app->get($route, function ($line,$area)  use ($app,$contentType,$githuborg,$git
 		$remote_address = $_SERVER['REMOTE_ADDR'];
 
 		$ReturnObject['rel'] = new stdClass();
-		$ReturnObject['rel'] = "urn:x-resource:schema:http://kin-lane.github.io/buildingblock/schemas/line.json";
+		$ReturnObject['rel'] = "urn:x-resource:schema:http://kin-lane.github.io/buildingblock/schemas/stops.json";
 
     $SearchQuery = "SELECT bb.Building_Block_ID,bb.Name,bb.About FROM building_block bb";
     $SearchQuery .= " JOIN building_block_category bbc ON bb.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
@@ -94,7 +94,7 @@ $app->get($route, function ($line,$area)  use ($app,$contentType,$githuborg,$git
       $R = array();
 			$R['rel'] = new stdClass();
 			$R['rel'] = "urn:x-resource:name:area";
-			$R['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $thisline . '/areas/' . $thisarea . '/';
+			$R['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . urlencode($thisline) . '/areas/' . urlencode($thisarea) . '/';
 			$R['class'] = new stdClass();
 			$R['class'] = "area";
 			array_push($Relationships,$R);
@@ -105,7 +105,7 @@ $app->get($route, function ($line,$area)  use ($app,$contentType,$githuborg,$git
 			$Links = array();
 			$Links['rel'] = new stdclass();
 			$Links['rel'] = "self";
-			$Links['href'] = 'http://' . $host . '/buildingblocks/subway/' . $thisline . '/areas/' . $thisarea . '/stops/' . $stop_name . '/';
+			$Links['href'] = 'http://' . $host . '/buildingblocks/subway/' . urlencode($thisline) . '/areas/' . urlencode($thisarea) . '/stops/' . urlencode($stop_name) . '/';
 			$Entities['links'] = $Links;
 
 			array_push($E,$Entities);
@@ -141,7 +141,7 @@ $app->get($route, function ($line,$area)  use ($app,$contentType,$githuborg,$git
 		$L = array();
 		$L['rel'] = new stdClass();
 		$L['rel'] = "self";
-		$L['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $thisline . '/areas/' . $thisarea . '/';
+		$L['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . urlencode($thisline) . '/areas/' . urlencode($thisarea) . '/';
 		array_push($Links,$L);
 
 		$ReturnObject['links'] = $Links;

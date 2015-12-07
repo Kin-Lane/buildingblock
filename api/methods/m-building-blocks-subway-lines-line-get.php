@@ -71,13 +71,33 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 
       if(strtolower($thisline)==strtolower($line))
         {
+
   			$E['line'] = $line;
   			$E['sort_order'] = $sort_order;
         $E['hex'] = $hex;
         $E['image'] = $image;
+        $E['areas'] = array();
+
+        $AreaQuery = "SELECT bbc.Name,bbc.Sort_Order FROM building_block_category bbc";
+        $AreaQuery .= " WHERE Type = '" . $line . "'";
+    		$AreaQuery .= " ORDER BY Sort_Order ASC";
+    		//echo $AreaQuery . "<br />";
+    		$AreaResult = mysql_query($AreaQuery) or die('Query failed: ' . mysql_error());
+        while ($Area = mysql_fetch_assoc($AreaResult))
+    			{
+          $area_name = $Area['Name'];
+          $area_sort_order = $Area['Sort_Order'];
+
+          $A = array();
+  				$A['name'] = $area_name;
+  				$A['sort_order'] = $area_sort_order;
+
+  				array_push($E['areas'],$A);
+          }
 
         $next = 1;
         $previous = 1;
+
         }
       else
         {

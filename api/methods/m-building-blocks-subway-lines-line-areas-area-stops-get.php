@@ -57,7 +57,9 @@ $app->get($route, function ($line,$area)  use ($app,$contentType,$githuborg,$git
 			{
 			$stop_id = $Database['Building_Block_ID'];
 			$stop_name = $Database['Name'];
-			$stop_about = $Database['About'];
+			$stop_about = strip_tags($Database['About']);
+      $stop_about = str_replace(chr(34),"",$stop_about);
+			$stop_about = str_replace(chr(39),"",$stop_about);
 
 			$Entities = array();
 			$Entities['rel'] = new stdClass();

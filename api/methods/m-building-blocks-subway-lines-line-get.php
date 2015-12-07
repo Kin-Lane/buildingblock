@@ -65,9 +65,9 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
 
       if($next == 1)
         {
-        $line = $Database['Type'];
         $next_line = $line;
         }
+
       if(strtolower($thisline)==strtolower($line))
         {
   			$E['line'] = $line;
@@ -138,7 +138,7 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
         // Previous
     		$L = array();
     		$L['rel'] = new stdClass();
-    		$L['rel'] = "self";
+    		$L['rel'] = "prev";
     		$L['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $previous_line;
     		array_push($Links,$L);
       }
@@ -148,7 +148,7 @@ $app->get($route, function ($line)  use ($app,$contentType,$githuborg,$githubrep
           // Previous
       		$L = array();
       		$L['rel'] = new stdClass();
-      		$L['rel'] = "self";
+      		$L['rel'] = "next";
       		$L['href'] = 'http://' . $host . '/buildingblocks/subway/line/' . $next_line;
       		array_push($Links,$L);
         }

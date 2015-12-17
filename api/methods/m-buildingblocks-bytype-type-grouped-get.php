@@ -167,8 +167,8 @@ $app->get($route, function ($type)  use ($app){
 				}
 
 			$F['questions'] = array();
-			$questionquery = "SELECT t.Title as Name, '' as URL, bbqp.Display_Text FROM `stack_network_kinlane_questionapi`.`question` q";
-			$questionquery .= " JOIN `apievangelist`.`building_block_questions_pivot` bbqp ON c.question_id = bbqp.Question_ID";
+			$questionquery = "SELECT q.Title as Name, '' as URL, bbqp.Display_Text FROM `stack_network_kinlane_questionapi`.`question` q";
+			$questionquery .= " JOIN `apievangelist`.`building_block_questions_pivot` bbqp ON q.question_id = bbqp.Question_ID";
 			$questionquery .= " WHERE bbqp.Building_Block_ID = " . $building_block_id;
 			//echo $questionquery . "<br />";
 			$questionresults = mysql_query($questionquery) or die('Query failed: ' . mysql_error());

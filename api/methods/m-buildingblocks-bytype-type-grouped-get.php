@@ -25,7 +25,7 @@ $app->get($route, function ($type)  use ($app){
 
 		$ReturnObject[$Building_Block_Category_Name] = array();
 
-		$Query = "SELECT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type,bbc.Image,bbc.Hex as Type FROM building_block b";
+		$Query = "SELECT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type as Type,bbc.Image,bbc.Hex FROM building_block b";
 		$Query .= " JOIN building_block_category bbc ON b.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
 		$Query .= " WHERE bbc.BuildingBlockCategory_ID = " . $Building_Block_Category_ID;
 		$Query .= " ORDER BY b.Sort_Order";

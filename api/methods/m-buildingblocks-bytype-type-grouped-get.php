@@ -146,7 +146,7 @@ $app->get($route, function ($type)  use ($app){
 
 			$F['tools'] = array();
 			$toolquery = "SELECT t.Name, t.URL, bbtp.Display_Text FROM tools t";
-			$toolquery .= " JOIN building_block_tools_pivot bbtp ON c.Tools_ID = bbtp.Tools_ID";
+			$toolquery .= " JOIN building_block_tools_pivot bbtp ON t.Tools_ID = bbtp.Tools_ID";
 			$toolquery .= " WHERE bbtp.Building_Block_ID = " . $building_block_id;
 			//echo $toolquery . "<br />";
 			$toolresults = mysql_query($toolquery) or die('Query failed: ' . mysql_error());

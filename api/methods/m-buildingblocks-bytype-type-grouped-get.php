@@ -25,7 +25,7 @@ $app->get($route, function ($type)  use ($app){
 
 		$ReturnObject[$Building_Block_Category_Name] = array();
 
-		$Query = "SELECT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type as Type,bbc.Image,bbc.Hex FROM building_block b";
+		$Query = "SELECT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type as Type,bbc.Image,bbc.Hex,bbc.About as Category_About FROM building_block b";
 		$Query .= " JOIN building_block_category bbc ON b.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
 		$Query .= " WHERE bbc.BuildingBlockCategory_ID = " . $Building_Block_Category_ID;
 		$Query .= " ORDER BY b.Sort_Order";
@@ -42,6 +42,7 @@ $app->get($route, function ($type)  use ($app){
 			$about = $Database['About'];
 			$category = $Database['Category'];
 			$category_id = $Database['Building_Block_Category_ID'];
+			$category_about = $Database['Category_About'];
 			$sort_order = $Database['Sort_Order'];
 
 			$category_image = $Database['Image'];
@@ -73,6 +74,7 @@ $app->get($route, function ($type)  use ($app){
 			$F['about'] = $about;
 			$F['category_id'] = $category_id;
 			$F['category'] = $category;
+			$F['category_about'] = $category_about;
 			$F['category_image'] = $category_image;
 			$F['category_hex'] = $category_hex;
 			$F['image'] = $image_path;

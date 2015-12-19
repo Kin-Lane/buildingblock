@@ -141,7 +141,7 @@ $app->get($route, function ($type)  use ($app){
 					$L = array();
 					$L['name'] = $link_name;
 					$L['url'] = $link_url;
-					$L['text'] = api_text;
+					$L['text'] = $api_text;
 					array_push($F['links'], $L);
 					}
 				}

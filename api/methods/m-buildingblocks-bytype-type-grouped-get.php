@@ -117,10 +117,11 @@ $app->get($route, function ($type)  use ($app){
 					$api_name = $apis['Name'];
 					$api_url = $apis['URL'];
 					$api_text = $apis['Display_Text'];
+					
 					$A = array();
 					$A['name'] = $api_name;
 					$A['url'] = $api_url;
-					$A['text'] = api_text;
+					$A['text'] = $api_text;
 					array_push($F['apis'], $A);
 					}
 				}

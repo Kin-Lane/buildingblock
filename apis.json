@@ -1,22 +1,4 @@
 [{
-<<<<<<< HEAD
-	"name": "Blog API",
-	"description": "I use this API to manage all of my blogs. Since I use Jekyll and Github to manage all my project sites, storing content, JSON, YAML, and server and client side code in each project, I use an API to distribute the blog updates to each project endpoint. You can access all my storytelling across all of the blogs that I maintain here in this API.",
-	"image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-blog-icon.png",
-	"x-open-ranking": "0",
-	"tags": ["Kin Lane Blog API"],
-	"created": "2016-04-04",
-	"modified": "2016-04-04",
-	"url": "http://kin-lane.github.io/blog/"
-	"specificationVersion": "0.14",
-	"apis": [{
-		"name": "Kin Lane Blog API",
-		"description": "<p><span>I use this API to manage all of my blogs. Since I use Jekyll and Github to manage all my project sites, storing content, JSON, YAML, and server and client side code in each project, I use an API to distribute the blog updates to each project endpoint. You can access all my storytelling across all of the blogs that I maintain here in this API.</span></p>",
-		"image": "http://kinlane-productions.s3.amazonaws.com/api-evangelist-site/company/logos/kin.png",
-		"humanURL": "https://kin-lane.github.io/blog/index.html",
-		"baseURL": "https://kin-lane.github.io/blog/index.html",
-		"tags": ["Kin Lane Blog API"],
-=======
 	"name": "Building Block API",
 	"description": "As I look through each of the areas of the API space, I look for what I consider to be the common building blocks used by API providers, service providers, and API consumers across the space. I organize these building blocks into buckets, and each of my research areas should have some, broken down by category. This API provides access to this information and connects it with other areas of my API stack.",
 	"image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-building-blocks-design.png",
@@ -33,7 +15,6 @@
 		"humanURL": "",
 		"baseURL": "",
 		"tags": ["Kin Lane Building Block API"],
->>>>>>> origin/gh-pages
 		"properties": [{
 			"type": "x-openapi-spec",
 			"url": "api-commons/openapi-spec.json"
@@ -129,11 +110,7 @@
 	}],
 	"include": [{
 		"name": "Parent",
-<<<<<<< HEAD
-		"url": "http://kin-lane.github.io/blog//apis.yaml"
-=======
 		"url": "https://kin-lane.github.io/buildingblock//apis.yaml"
->>>>>>> origin/gh-pages
 	}],
 	"maintainers": [{
 		"FN": "Kin Lane",

@@ -8,8 +8,9 @@ $app->get($route, function ($type)  use ($app){
  	$params = $request->params();
 
 	$type = trim(mysql_real_escape_string($type));
+	if(isset($params['zone'])){ $zone = mysql_real_escape_string($params['zone']); } else { $zone = ''; }
 
-	$Query = "SELECT bbc.BuildingBlockCategory_ID AS Building_Block_Category_ID,bbc.Name,bbc.Sort_Order FROM building_block_category bbc";
+	$Query = "SELECT DISTINCT bbc.BuildingBlockCategory_ID AS Building_Block_Category_ID,bbc.Name,bbc.Sort_Order FROM building_block_category bbc";
 	$Query .= " WHERE bbc.Type ='" . $type . "'";
 	$Query .= " ORDER BY Sort_Order";
 	//echo $Query . "<br />";
@@ -20,14 +21,21 @@ $app->get($route, function ($type)  use ($app){
 		{
 
 		$Building_Block_Category_ID = $Category['Building_Block_Category_ID'];
-		$Building_Block_Category_Name = $Category['Name'];
+		$Building_Block_Category_Name = trim($Category['Name']);
 		$Building_Block_Category_Sort_Order = $Category['Sort_Order'];
 
-		$ReturnObject[$Building_Block_Category_Name] = array();
+		if(isset($ReturnObject[$Building_Block_Category_Name])){ } else { $ReturnObject[$Building_Block_Category_Name] = array(); }
 
-		$Query = "SELECT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type as Type,bbc.Image,bbc.Hex,bbc.About as Category_About FROM building_block b";
+		$Query = "SELECT DISTINCT b.Building_Block_ID,b.Building_Block_Category_ID,b.Name,b.About,b.Sort_Order,bbc.Name AS Category,bbc.Type as Type,bbc.Image,bbc.Hex,bbc.About as Category_About FROM building_block b";
 		$Query .= " JOIN building_block_category bbc ON b.Building_Block_Category_ID = bbc.BuildingBlockCategory_ID";
 		$Query .= " WHERE bbc.BuildingBlockCategory_ID = " . $Building_Block_Category_ID;
+		if($zone!='')
+			{
+			if($zone=='Essentials'){ $Query .= " AND b.Essential = 1"; }	
+			if($zone=='Technical'){ $Query .= " AND b.Technical = 1"; }
+			if($zone=='Business'){ $Query .= " AND b.Business = 1"; }
+			if($zone=='Politics'){ $Query .= " AND b.Politics = 1"; }
+			}		
 		$Query .= " ORDER BY b.Sort_Order";
 		//echo $Query . "<br />";
 
@@ -39,7 +47,7 @@ $app->get($route, function ($type)  use ($app){
 			$building_block_id = $Database['Building_Block_ID'];
 			$building_block_category_id = $Database['Building_Block_Category_ID'];
 			$name = $Database['Name'];
-			$about = $Database['About'];
+			$about = scrub($Database['About']);
 			$category = $Database['Category'];
 			$category_id = $Database['Building_Block_Category_ID'];
 			$category_about = $Database['Category_About'];
@@ -84,7 +92,7 @@ $app->get($route, function ($type)  use ($app){
 			$F['organizations'] = array();
 			$orgquery = "SELECT c.Name, c.URL,cbbp.Display_Text FROM company c";
 			$orgquery .= " JOIN company_building_block_pivot cbbp ON c.Company_ID = cbbp.Company_ID";
-			$orgquery .= " WHERE cbbp.Building_Block_ID = " . $building_block_id;
+			$orgquery .= " WHERE cbbp.Journey = 1 AND cbbp.Building_Block_ID = " . $building_block_id;
 			//echo $orgquery . "<br />";
 			$orgresults = mysql_query($orgquery) or die('Query failed: ' . mysql_error());
 
@@ -106,7 +114,7 @@ $app->get($route, function ($type)  use ($app){
 			$F['apis'] = array();
 			$apiquery = "SELECT a.Name, a.URL, abbp.Display_Text FROM api a";
 			$apiquery .= " JOIN api_building_block_pivot abbp ON a.API_ID = abbp.API_ID";
-			$apiquery .= " WHERE abbp.Building_Block_ID = " . $building_block_id;
+			$apiquery .= " WHERE abbp.Journey = 1 AND abbp.Building_Block_ID = " . $building_block_id;
 			//echo $orgquery . "<br />";
 			$apiresults = mysql_query($apiquery) or die('Query failed: ' . mysql_error());
 

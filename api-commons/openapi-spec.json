@@ -2,6 +2,7 @@
 	"swagger": "2.0",
 	"info": {
 <<<<<<< HEAD
+<<<<<<< HEAD
 		"title": "Blog",
 		"description": "This is an blog for all my blog entries. I use a single blog system to manage all my sites. Based upon tagging, I then publish each post out to its respective Github Page based repo.",
 		"termsOfService": "http://stack.network/terms-of-service.html",
@@ -9,6 +10,8 @@
 	},
 	"host": "blog.api.kinlane.com",
 =======
+=======
+>>>>>>> origin/gh-pages
 		"title": "Building Block API",
 		"description": "When I started API Evangelist, I began tracking on the elements that other leading API providers use to operate their API programs, and eventually I started calling these building blocks. I keep a running list of building blocks, broken down into groups. I think use these to keep track of which building blocks companies are using. This is the API I use to manage these elements of everyday API operation.",
 		"contact": {
@@ -19,12 +22,16 @@
 		"version": "v1"
 	},
 	"host": "buildingblock.api.kinlane.com",
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 	"basePath": "/",
 	"schemes": ["http"],
 	"produces": ["application/json"],
 	"consumes": ["application/json"],
 	"paths": {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		"/blog/": {
 			"get": {
@@ -38,6 +45,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 		"/buildingblocks/": {
 			"get": {
 				"summary": "Get All Building Blocks",
@@ -47,15 +56,22 @@
 					"in": "query",
 					"name": "appid",
 					"description": "your appid for accessing the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				},
 				{
 					"in": "query",
 					"name": "appkey",
 <<<<<<< HEAD
+<<<<<<< HEAD
 					"description": "your appkey for accessing the blog",
 					"type": "string",
 					"format": "string"
+=======
+					"description": "your appkey for accessing the building block"
+>>>>>>> origin/gh-pages
 =======
 					"description": "your appkey for accessing the building block"
 >>>>>>> origin/gh-pages
@@ -74,9 +90,13 @@
 					"in": "query",
 					"name": "query",
 <<<<<<< HEAD
+<<<<<<< HEAD
 					"description": "a text query to search across blog",
 					"type": "string",
 					"format": "string"
+=======
+					"description": "a text query to search across building block"
+>>>>>>> origin/gh-pages
 =======
 					"description": "a text query to search across building block"
 >>>>>>> origin/gh-pages
@@ -92,6 +112,7 @@
 					}
 				},
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"tags": ["Blog"],
 				"security": []
 			},
@@ -106,6 +127,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["Building Block"],
 				"security": []
 			},
@@ -122,11 +145,15 @@
 					"in": "query",
 					"name": "appid",
 					"description": "your appid for accessing the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				},
 				{
 					"in": "query",
 					"name": "appkey",
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"description": "your appkey for accessing the blog",
 					"type": "string",
@@ -188,6 +215,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 					"description": "your appkey for accessing the building block"
 				},
 				{
@@ -262,6 +291,9 @@
 					"in": "path",
 					"name": "type",
 					"description": "the building block type to filter by"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}],
 				"responses": {
@@ -269,6 +301,7 @@
 						"description": "OK"
 					}
 				},
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"tags": ["Blog"],
 				"security": []
@@ -286,6 +319,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["Building Block"],
 				"security": []
 			}
@@ -299,15 +334,22 @@
 					"in": "query",
 					"name": "appid",
 					"description": "your appid for accessing the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				},
 				{
 					"in": "query",
 					"name": "appkey",
 <<<<<<< HEAD
+<<<<<<< HEAD
 					"description": "your appkey for accessing the blog",
 					"type": "string",
 					"format": "string"
+=======
+					"description": "your appkey for accessing the building block"
+>>>>>>> origin/gh-pages
 =======
 					"description": "your appkey for accessing the building block"
 >>>>>>> origin/gh-pages
@@ -317,6 +359,7 @@
 						"description": "OK"
 					}
 				},
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"tags": ["Blog"],
 				"security": []
@@ -334,6 +377,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["Building Block"],
 				"security": []
 			},
@@ -384,11 +429,15 @@
 					"in": "query",
 					"name": "appid",
 					"description": "your appid for accessing the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				},
 				{
 					"in": "query",
 					"name": "appkey",
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"description": "your appkey for accessing the blog",
 					"type": "string",
@@ -409,6 +458,8 @@
 					"name": "sort",
 					"description": "which field to sort by"
 =======
+=======
+>>>>>>> origin/gh-pages
 					"description": "your appkey for accessing the building block"
 				},
 				{
@@ -444,6 +495,9 @@
 					"in": "path",
 					"name": "building_block_id",
 					"description": "the unique id for buildingblock entry"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}],
 				"responses": {
@@ -451,6 +505,7 @@
 						"description": "OK"
 					}
 				},
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"tags": ["Blog"],
 				"security": []
@@ -468,6 +523,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["Building Block"],
 				"security": []
 			},
@@ -479,11 +536,15 @@
 					"in": "query",
 					"name": "appid",
 					"description": "your appid for accessing the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				},
 				{
 					"in": "query",
 					"name": "appkey",
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"description": "your appkey for accessing the blog",
 					"type": "string",
@@ -504,6 +565,8 @@
 					"name": "sort",
 					"description": "which field to sort by"
 =======
+=======
+>>>>>>> origin/gh-pages
 					"description": "your appkey for accessing the building block"
 				},
 				{
@@ -557,6 +620,9 @@
 					"in": "query",
 					"name": "sort_order",
 					"description": "sort_order for the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}],
 				"responses": {
@@ -564,6 +630,7 @@
 						"description": "OK"
 					}
 				},
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"tags": ["Blog"],
 				"security": []
@@ -581,6 +648,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["Building Block"],
 				"security": []
 			}
@@ -594,11 +663,15 @@
 					"in": "query",
 					"name": "appid",
 					"description": "your appid for accessing the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				},
 				{
 					"in": "query",
 					"name": "appkey",
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"description": "your appkey for accessing the blog",
 					"type": "string",
@@ -618,6 +691,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 					"description": "your appkey for accessing the building block"
 				},
 				{
@@ -666,6 +741,9 @@
 					"in": "formData",
 					"name": "type",
 					"description": "image type"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}],
 				"responses": {
@@ -673,6 +751,7 @@
 						"description": "OK"
 					}
 				},
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"tags": ["Tags"],
 				"security": []
@@ -688,6 +767,8 @@
 					"name": "appid",
 					"description": "your appid for accessing the blog"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["Images"],
 				"security": []
 			}
@@ -701,11 +782,15 @@
 					"in": "query",
 					"name": "appid",
 					"description": "your appid for accessing the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				},
 				{
 					"in": "query",
 					"name": "appkey",
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"description": "your appkey for accessing the blog"
 				},
@@ -723,6 +808,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 					"description": "your appkey for accessing the building block"
 				},
 				{
@@ -734,6 +821,9 @@
 					"in": "path",
 					"name": "image_id",
 					"description": "id for the image to remove from building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}],
 				"responses": {
@@ -741,6 +831,7 @@
 						"description": "OK"
 					}
 				},
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"tags": ["Tags"],
 				"security": []
@@ -756,6 +847,8 @@
 					"name": "appid",
 					"description": "your appid for accessing the blog"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["Images"],
 				"security": []
 			}
@@ -769,11 +862,15 @@
 					"in": "query",
 					"name": "appid",
 					"description": "your appid for accessing the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				},
 				{
 					"in": "query",
 					"name": "appkey",
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"description": "your appkey for accessing the blog"
 				},
@@ -782,12 +879,17 @@
 					"name": "tag",
 					"description": "the tag to filter by"
 =======
+=======
+>>>>>>> origin/gh-pages
 					"description": "your appkey for accessing the building block"
 				},
 				{
 					"in": "path",
 					"name": "building_block_id",
 					"description": "id for building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}],
 				"responses": {
@@ -795,6 +897,7 @@
 						"description": "OK"
 					}
 				},
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"tags": ["Tags"],
 				"security": []
@@ -812,6 +915,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["Logs"],
 				"security": []
 			},
@@ -862,11 +967,15 @@
 					"in": "query",
 					"name": "appid",
 					"description": "your appid for accessing the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				},
 				{
 					"in": "query",
 					"name": "appkey",
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"description": "your appkey for accessing the blog",
 					"type": "string",
@@ -879,6 +988,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 					"description": "your appkey for accessing the building block"
 				},
 				{
@@ -890,6 +1001,9 @@
 					"in": "path",
 					"name": "log_id",
 					"description": "id for the log"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}],
 				"responses": {
@@ -897,6 +1011,7 @@
 						"description": "OK"
 					}
 				},
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"tags": ["Blog"],
 				"security": []
@@ -912,6 +1027,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["Logs"],
 				"security": []
 			}
@@ -925,11 +1042,15 @@
 					"in": "query",
 					"name": "appid",
 					"description": "your appid for accessing the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				},
 				{
 					"in": "query",
 					"name": "appkey",
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"description": "your appkey for accessing the blog",
 					"type": "string",
@@ -942,12 +1063,17 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 					"description": "your appkey for accessing the building block"
 				},
 				{
 					"in": "path",
 					"name": "building_block_id",
 					"description": "id for building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}],
 				"responses": {
@@ -955,6 +1081,7 @@
 						"description": "OK"
 					}
 				},
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"tags": ["Blog"],
 				"security": []
@@ -1065,6 +1192,8 @@
 					"name": "twitter_build",
 					"description": "the twitter build string"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["Organizations"],
 				"security": []
 			},
@@ -1325,6 +1454,9 @@
 					"in": "path",
 					"name": "tool_id",
 					"description": "tool to remove from building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}],
 				"responses": {
@@ -1332,6 +1464,7 @@
 						"description": "OK"
 					}
 				},
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"tags": ["Blog"],
 				"security": []
@@ -1349,6 +1482,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["Tools"],
 				"security": []
 			}
@@ -1362,11 +1497,15 @@
 					"in": "query",
 					"name": "appid",
 					"description": "your appid for accessing the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				},
 				{
 					"in": "query",
 					"name": "appkey",
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"description": "your appkey for accessing the blog",
 					"type": "string",
@@ -1379,12 +1518,17 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 					"description": "your appkey for accessing the building block"
 				},
 				{
 					"in": "path",
 					"name": "building_block_id",
 					"description": "id for building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}],
 				"responses": {
@@ -1392,6 +1536,7 @@
 						"description": "OK"
 					}
 				},
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"tags": ["Tags"],
 				"security": []
@@ -1428,6 +1573,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["URLs"],
 				"security": []
 			},
@@ -1464,6 +1611,9 @@
 					"in": "formData",
 					"name": "url",
 					"description": "the url"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}],
 				"responses": {
@@ -1471,6 +1621,7 @@
 						"description": "OK"
 					}
 				},
+<<<<<<< HEAD
 <<<<<<< HEAD
 				"tags": ["Tags"],
 				"security": []
@@ -1488,6 +1639,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 				"tags": ["URLs"],
 				"security": []
 			}
@@ -1501,11 +1654,15 @@
 					"in": "query",
 					"name": "appid",
 					"description": "your appid for accessing the building block"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				},
 				{
 					"in": "query",
 					"name": "appkey",
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"description": "your appkey for accessing the blog",
 					"type": "string",
@@ -1525,6 +1682,8 @@
 					"type": "string",
 					"format": "string"
 =======
+=======
+>>>>>>> origin/gh-pages
 					"description": "your appkey for accessing the building block"
 				},
 				{
@@ -1536,6 +1695,9 @@
 					"in": "path",
 					"name": "url_id",
 					"description": "id for the url"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}],
 				"responses": {
@@ -1544,7 +1706,11 @@
 					}
 				},
 <<<<<<< HEAD
+<<<<<<< HEAD
 				"tags": ["Tags"],
+=======
+				"tags": ["URLs"],
+>>>>>>> origin/gh-pages
 =======
 				"tags": ["URLs"],
 >>>>>>> origin/gh-pages
@@ -1553,6 +1719,7 @@
 		}
 	},
 	"definitions": {
+<<<<<<< HEAD
 <<<<<<< HEAD
 		"0": {
 			"properties": {
@@ -1652,6 +1819,8 @@
 					"description": "This is a default description.",
 					"type": "get"
 =======
+=======
+>>>>>>> origin/gh-pages
 		"buildingblock": {
 			"properties": {
 				"building_block_id": {
@@ -1833,6 +2002,9 @@
 				"photo": {
 					"description": "This is a default description.",
 					"type": "delete"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}
 			}
@@ -1841,6 +2013,7 @@
 			"properties": {
 				"tag_id": {
 					"description": "This is a default description.",
+<<<<<<< HEAD
 <<<<<<< HEAD
 					"type": "get"
 				},
@@ -1852,6 +2025,8 @@
 					"description": "This is a default description.",
 					"type": "get"
 =======
+=======
+>>>>>>> origin/gh-pages
 					"type": "delete"
 				},
 				"tag": {
@@ -1881,6 +2056,9 @@
 				"type": {
 					"description": "This is a default description.",
 					"type": "delete"
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
 				}
 			}

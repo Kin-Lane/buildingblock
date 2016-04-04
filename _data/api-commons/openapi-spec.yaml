@@ -1,6 +1,7 @@
 - swagger: "2.0"
   info:
 <<<<<<< HEAD
+<<<<<<< HEAD
     title: Blog
     description: This is an blog for all my blog entries. I use a single blog system
       to manage all my sites. Based upon tagging, I then publish each post out to its
@@ -9,6 +10,8 @@
     version: v2
   host: blog.api.kinlane.com
 =======
+=======
+>>>>>>> origin/gh-pages
     title: Building Block API
     description: When I started API Evangelist, I began tracking on the elements that
       other leading API providers use to operate their API programs, and eventually
@@ -22,6 +25,9 @@
       email: info@kinlane.com
     version: v1
   host: buildingblock.api.kinlane.com
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
   basePath: /
   schemes:
@@ -31,6 +37,7 @@
   consumes:
   - application/json
   paths:
+<<<<<<< HEAD
 <<<<<<< HEAD
     /blog/:
       get:
@@ -49,6 +56,8 @@
           type: string
           format: string
 =======
+=======
+>>>>>>> origin/gh-pages
     /buildingblocks/:
       get:
         summary: Get All Building Blocks
@@ -61,6 +70,9 @@
         - in: query
           name: appkey
           description: your appkey for accessing the building block
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         - in: query
           name: count
@@ -71,9 +83,13 @@
         - in: query
           name: query
 <<<<<<< HEAD
+<<<<<<< HEAD
           description: a text query to search across blog
           type: string
           format: string
+=======
+          description: a text query to search across building block
+>>>>>>> origin/gh-pages
 =======
           description: a text query to search across building block
 >>>>>>> origin/gh-pages
@@ -84,6 +100,7 @@
           200:
             description: OK
         tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
         - Blog
         security: []
@@ -143,6 +160,8 @@
           type: string
           format: string
 =======
+=======
+>>>>>>> origin/gh-pages
         - Building Block
         security: []
       post:
@@ -168,11 +187,15 @@
         - in: query
           name: sort_order
           description: sort_order for the building block
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
             description: OK
         tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
         - Blog
         security: []
@@ -193,6 +216,8 @@
           type: string
           format: string
 =======
+=======
+>>>>>>> origin/gh-pages
         - Building Block
         security: []
     /buildingblocks/bycategory/{category}:
@@ -210,11 +235,15 @@
         - in: path
           name: category
           description: the building block category to filter by
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
             description: OK
         tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
         - Blog
         security: []
@@ -244,6 +273,8 @@
           name: sort
           description: which field to sort by
 =======
+=======
+>>>>>>> origin/gh-pages
         - Building Block
         security: []
     /buildingblocks/bytype/{type}:
@@ -326,11 +357,15 @@
         - in: path
           name: category_id
           description: id for the building block
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
             description: OK
         tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
         - Blog
         security: []
@@ -360,6 +395,8 @@
           name: sort
           description: which field to sort by
 =======
+=======
+>>>>>>> origin/gh-pages
         - Building Block
         security: []
     /buildingblocks/{building_block_id}/:
@@ -429,11 +466,15 @@
         - in: query
           name: sort_order
           description: sort_order for the building block
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
             description: OK
         tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
         - Blog
         security: []
@@ -464,6 +505,8 @@
           type: string
           format: string
 =======
+=======
+>>>>>>> origin/gh-pages
         - Building Block
         security: []
     /buildingblocks/{building_block_id}/images/:
@@ -481,11 +524,15 @@
         - in: path
           name: building_block_id
           description: id for building block
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
             description: OK
         tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
         - Tags
         security: []
@@ -512,6 +559,8 @@
           type: string
           format: string
 =======
+=======
+>>>>>>> origin/gh-pages
         - Images
         security: []
       post:
@@ -561,11 +610,15 @@
         - in: path
           name: image_id
           description: id for the image to remove from building block
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
             description: OK
         tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
         - Tags
         security: []
@@ -585,6 +638,8 @@
           name: tag
           description: the tag to filter by
 =======
+=======
+>>>>>>> origin/gh-pages
         - Images
         security: []
     /buildingblocks/{building_block_id}/logs/:
@@ -602,11 +657,15 @@
         - in: path
           name: building_block_id
           description: id for building block
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
             description: OK
         tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
         - Tags
         security: []
@@ -632,6 +691,8 @@
           type: string
           format: string
 =======
+=======
+>>>>>>> origin/gh-pages
         - Logs
         security: []
       post:
@@ -678,11 +739,15 @@
         - in: path
           name: log_id
           description: id for the log
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
             description: OK
         tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
         - Blog
         security: []
@@ -707,6 +772,8 @@
           type: string
           format: string
 =======
+=======
+>>>>>>> origin/gh-pages
         - Logs
         security: []
     /buildingblocks/{building_block_id}/organization/:
@@ -724,11 +791,15 @@
         - in: path
           name: building_block_id
           description: id for building block
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
             description: OK
         tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
         - Blog
         security: []
@@ -808,6 +879,8 @@
           name: twitter_build
           description: the twitter build string
 =======
+=======
+>>>>>>> origin/gh-pages
         - Organizations
         security: []
       post:
@@ -854,11 +927,15 @@
         - in: path
           name: organization_id
           description: organization to remove from building block
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
             description: OK
         tags:
+<<<<<<< HEAD
 <<<<<<< HEAD
         - Blog
         security: []
@@ -884,6 +961,8 @@
           type: string
           format: string
 =======
+=======
+>>>>>>> origin/gh-pages
         - Organizations
         security: []
     /buildingblocks/{building_block_id}/tags/:
@@ -901,6 +980,9 @@
         - in: path
           name: building_block_id
           description: id for building block
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
@@ -909,6 +991,7 @@
         - Tags
         security: []
       post:
+<<<<<<< HEAD
 <<<<<<< HEAD
         summary: Add Tag for Blog Post
         description: add tag to blog
@@ -935,6 +1018,8 @@
           type: string
           format: string
 =======
+=======
+>>>>>>> origin/gh-pages
         summary: Add Tag for Building Block
         description: add tag to building block
         operationId: addBuildingBlockTag
@@ -951,6 +1036,9 @@
         - in: query
           name: tag
           description: tag name
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
@@ -958,6 +1046,7 @@
         tags:
         - Tags
         security: []
+<<<<<<< HEAD
 <<<<<<< HEAD
     /blog/{blog_id}/tags/{tag}:
       delete:
@@ -986,6 +1075,8 @@
           type: string
           format: string
 =======
+=======
+>>>>>>> origin/gh-pages
     /buildingblocks/{building_block_id}/tags/{tag}:
       delete:
         summary: Delete Tag for Building Block
@@ -1004,6 +1095,9 @@
         - in: path
           name: tag
           description: tag to remove from building block
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
         responses:
           200:
@@ -1011,6 +1105,7 @@
         tags:
         - Tags
         security: []
+<<<<<<< HEAD
 <<<<<<< HEAD
   definitions:
     0:
@@ -1087,6 +1182,8 @@
           description: This is a default description.
           type: get
 =======
+=======
+>>>>>>> origin/gh-pages
     /buildingblocks/{building_block_id}/tools/:
       get:
         summary: Get Tools for Building Block
@@ -1365,11 +1462,15 @@
         photo:
           description: This is a default description.
           type: delete
+<<<<<<< HEAD
+>>>>>>> origin/gh-pages
+=======
 >>>>>>> origin/gh-pages
     tag:
       properties:
         tag_id:
           description: This is a default description.
+<<<<<<< HEAD
 <<<<<<< HEAD
           type: get
         tag:
@@ -1379,6 +1480,8 @@
           description: This is a default description.
           type: get
 =======
+=======
+>>>>>>> origin/gh-pages
           type: delete
         tag:
           description: This is a default description.
@@ -1399,5 +1502,9 @@
           type: delete
         type:
           description: This is a default description.
+<<<<<<< HEAD
+          type: delete
+>>>>>>> origin/gh-pages
+=======
           type: delete
 >>>>>>> origin/gh-pages

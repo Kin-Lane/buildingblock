@@ -1,120 +1,134 @@
-[{
-	"name": "Building Block API",
-	"description": "As I look through each of the areas of the API space, I look for what I consider to be the common building blocks used by API providers, service providers, and API consumers across the space. I organize these building blocks into buckets, and each of my research areas should have some, broken down by category. This API provides access to this information and connects it with other areas of my API stack.",
-	"image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-building-blocks-design.png",
-	"x-open-ranking": "0",
-	"tags": ["Kin Lane Building Block API"],
-	"created": "2016-04-04",
-	"modified": "2016-04-04",
-	"url": "https://kin-lane.github.io/buildingblock/"
-	"specificationVersion": "0.14",
-	"apis": [{
-		"name": "Kin Lane Building Block API",
-		"description": "<p>As I look through each of the areas of the API space, I look for what I consider to be the common building blocks used by API providers, service providers, and API consumers across the space. I organize these building blocks into buckets, and each of my research areas should have some, broken down by category. This API provides access to this information and connects it with other areas of my API stack.</p>",
-		"image": "http://kinlane-productions.s3.amazonaws.com/api-evangelist-site/company/logos/kin.png",
-		"humanURL": "",
-		"baseURL": "",
-		"tags": ["Kin Lane Building Block API"],
-		"properties": [{
-			"type": "x-openapi-spec",
-			"url": "api-commons/openapi-spec.json"
-		}]
-	}],
-	"x-common": [{
-		"type": "x-blog-rss-feed",
-		"url": "http://www.talkwalker.com/alerts/rss/NG2GCZBIIN4ULOCFJRSUK6EIY2AZLCE2YTABNE6EHW4OAA2B53FA%3D%3D%3D%3D"
-	},
-	{
-		"type": "x-authentication-overview",
-		"url": "authentication/"
-	},
-	{
-		"type": "x-base-url-for-api",
-		"url": "http://api.kinlane.com"
-	},
-	{
-		"type": "x-blog",
-		"url": "blog/"
-	},
-	{
-		"type": "x-blog-rss-feed",
-		"url": "blog.xml"
-	},
-	{
-		"type": "x-change-log",
-		"url": "change-log/"
-	},
-	{
-		"type": "x-portal",
-		"url": "https://kin-lane.github.io"
-	},
-	{
-		"type": "x-documentation",
-		"url": "documentation/"
-	},
-	{
-		"type": "x-faq",
-		"url": "frequently-asked-questions/"
-	},
-	{
-		"type": "x-getting-started",
-		"url": "getting-started/"
-	},
-	{
-		"type": "x-github",
-		"url": "https://github.com/kinlane"
-	},
-	{
-		"type": "x-issues",
-		"url": "issues/"
-	},
-	{
-		"type": "x-login",
-		"url": "https://apievangelist.3scale.net/login"
-	},
-	{
-		"type": "x-dedicated-plans--pricing-page",
-		"url": "plans/"
-	},
-	{
-		"type": "x-privacy-policy-page",
-		"url": "privacy-policy/"
-	},
-	{
-		"type": "x-road-map",
-		"url": "road-map/"
-	},
-	{
-		"type": "x-selfservice-registration",
-		"url": "https://apievangelist.3scale.net/signup"
-	},
-	{
-		"type": "x-status-dashboard",
-		"url": "status/"
-	},
-	{
-		"type": "x-support-overview-page",
-		"url": "support/"
-	},
-	{
-		"type": "x-terms-of-service-page",
-		"url": "terms-of-service/"
-	},
-	{
-		"type": "x-twitter",
-		"url": "https://twitter.com/kinlane"
-	},
-	{
-		"type": "x-api-plan",
-		"url": "api-commons/api-plan.json"
-	}],
-	"include": [{
-		"name": "Parent",
-		"url": "https://kin-lane.github.io/buildingblock//apis.yaml"
-	}],
-	"maintainers": [{
-		"FN": "Kin Lane",
-		"x-twitter": "apievangelist",
-		"email": "info@apievangelist.com"
-	}]
-}]
+{
+  "name": "Building Block API",
+  "description": "As I look through each of the areas of the API space, I look for what I consider to be the common building blocks used by API providers, service providers, and API consumers across the space. I organize these building blocks into buckets, and each of my research areas should have some, broken down by category. This API provides access to this information and connects it with other areas of my API stack.",
+  "image": "https://s3.amazonaws.com/kinlane-productions/bw-icons/bw-building-blocks-design.png",
+  "x-open-ranking": "0",
+  "tags": [
+    "Kin Lane Building Block API"
+  ],
+  "created": "2016-04-04",
+  "modified": "2016-04-04",
+  "url": "https://kin-lane.github.io/buildingblock/",
+  "specificationVersion": "0.14",
+  "apis": [
+    {
+      "name": "Kin Lane Building Block API",
+      "description": "<p>As I look through each of the areas of the API space, I look for what I consider to be the common building blocks used by API providers, service providers, and API consumers across the space. I organize these building blocks into buckets, and each of my research areas should have some, broken down by category. This API provides access to this information and connects it with other areas of my API stack.</p>",
+      "image": "http://kinlane-productions.s3.amazonaws.com/api-evangelist-site/company/logos/kin.png",
+      "humanURL": "",
+      "baseURL": "",
+      "tags": [
+        "Kin Lane Building Block API"
+      ],
+      "properties": [
+        {
+          "type": "x-openapi-spec",
+          "url": "api-commons/openapi-spec.json"
+        }
+      ]
+    }
+  ],
+  "x-common": [
+    {
+      "type": "x-blog-rss-feed",
+      "url": "http://www.talkwalker.com/alerts/rss/NG2GCZBIIN4ULOCFJRSUK6EIY2AZLCE2YTABNE6EHW4OAA2B53FA%3D%3D%3D%3D"
+    },
+    {
+      "type": "x-authentication-overview",
+      "url": "authentication/"
+    },
+    {
+      "type": "x-base-url-for-api",
+      "url": "http://api.kinlane.com"
+    },
+    {
+      "type": "x-blog",
+      "url": "blog/"
+    },
+    {
+      "type": "x-blog-rss-feed",
+      "url": "blog.xml"
+    },
+    {
+      "type": "x-change-log",
+      "url": "change-log/"
+    },
+    {
+      "type": "x-portal",
+      "url": "https://kin-lane.github.io"
+    },
+    {
+      "type": "x-documentation",
+      "url": "documentation/"
+    },
+    {
+      "type": "x-faq",
+      "url": "frequently-asked-questions/"
+    },
+    {
+      "type": "x-getting-started",
+      "url": "getting-started/"
+    },
+    {
+      "type": "x-github",
+      "url": "https://github.com/kinlane"
+    },
+    {
+      "type": "x-issues",
+      "url": "issues/"
+    },
+    {
+      "type": "x-login",
+      "url": "https://apievangelist.3scale.net/login"
+    },
+    {
+      "type": "x-dedicated-plans--pricing-page",
+      "url": "plans/"
+    },
+    {
+      "type": "x-privacy-policy-page",
+      "url": "privacy-policy/"
+    },
+    {
+      "type": "x-road-map",
+      "url": "road-map/"
+    },
+    {
+      "type": "x-selfservice-registration",
+      "url": "https://apievangelist.3scale.net/signup"
+    },
+    {
+      "type": "x-status-dashboard",
+      "url": "status/"
+    },
+    {
+      "type": "x-support-overview-page",
+      "url": "support/"
+    },
+    {
+      "type": "x-terms-of-service-page",
+      "url": "terms-of-service/"
+    },
+    {
+      "type": "x-twitter",
+      "url": "https://twitter.com/kinlane"
+    },
+    {
+      "type": "x-api-plan",
+      "url": "api-commons/api-plan.json"
+    }
+  ],
+  "include": [
+    {
+      "name": "Parent",
+      "url": "https://kin-lane.github.io/buildingblock//apis.yaml"
+    }
+  ],
+  "maintainers": [
+    {
+      "FN": "Kin Lane",
+      "x-twitter": "apievangelist",
+      "email": "info@apievangelist.com"
+    }
+  ]
+}
